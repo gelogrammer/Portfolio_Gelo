@@ -14,7 +14,11 @@ import {
   LockClosedIcon,
   FrameIcon,
   TableIcon,
-  GearIcon
+  GearIcon,
+  RocketIcon,
+  HeartIcon,
+  TimerIcon,
+  ChatBubbleIcon
 } from "@radix-ui/react-icons";
 import Link from "next/link";
 import Image from "next/image";
@@ -64,6 +68,29 @@ const skills = {
   ]
 };
 
+const workValues = [
+  {
+    icon: <RocketIcon className="w-6 h-6" />,
+    title: "Innovation",
+    description: "Always exploring cutting-edge technologies and creative solutions to complex problems."
+  },
+  {
+    icon: <HeartIcon className="w-6 h-6" />,
+    title: "Quality",
+    description: "Committed to writing clean, maintainable code with comprehensive testing and documentation."
+  },
+  {
+    icon: <TimerIcon className="w-6 h-6" />,
+    title: "Efficiency",
+    description: "Focus on optimizing performance and delivering results within project timelines."
+  },
+  {
+    icon: <ChatBubbleIcon className="w-6 h-6" />,
+    title: "Communication",
+    description: "Strong emphasis on clear, proactive communication and collaborative problem-solving."
+  }
+];
+
 const socialLinks = [
   {
     name: "GitHub",
@@ -110,7 +137,6 @@ export default function About() {
             transition={{ duration: 0.5 }}
             className="relative"
           >
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-primary/50 blur-3xl opacity-20 animate-pulse" />
             <Image
               src="/assets/images/profile/me.JPEG"
               alt="Angelo John S. Calleja"
@@ -126,7 +152,7 @@ export default function About() {
               className="space-y-6"
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary/50 bg-clip-text text-transparent tracking-normal leading-normal pb-4 px-1">
-                Angelo John S. Calleja
+                About Me
               </h1>
               <div className="space-y-4">
                 <motion.div 
@@ -147,10 +173,17 @@ export default function About() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="text-xl text-muted-foreground/90 leading-relaxed max-w-xl"
+                  className="text-xl text-muted-foreground/90 leading-relaxed"
                 >
-                  Passionate about creating <span className="text-primary font-medium">scalable</span> and <span className="text-primary font-medium">high-performance</span> web applications. 
-                  Specializing in <span className="text-primary font-medium">Angular</span> frontends and <span className="text-primary font-medium">Laravel</span> backend systems.
+                  Hello! I'm Angelo, a passionate Full Stack Developer with over 2 years of experience in building modern web applications. I specialize in creating <span className="text-primary font-medium">scalable</span>, <span className="text-primary font-medium">user-friendly</span>, and <span className="text-primary font-medium">high-performance</span> solutions.
+                </motion.p>
+                <motion.p 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="text-xl text-muted-foreground/90 leading-relaxed"
+                >
+                  My expertise lies in <span className="text-primary font-medium">Angular</span> for frontend development and <span className="text-primary font-medium">Laravel</span> for backend systems. I'm passionate about creating seamless user experiences and robust architectures that scale.
                 </motion.p>
               </div>
             </motion.div>
@@ -182,6 +215,76 @@ export default function About() {
 
       {/* Content Sections */}
       <div className="container py-24 space-y-32">
+        {/* Work Values Section */}
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          className="space-y-16 relative"
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent rounded-3xl blur-3xl -z-10" />
+          <motion.div
+            variants={item}
+            className="relative"
+            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+          >
+            <motion.div
+              animate={{ 
+                scale: [1, 1.02, 1],
+                rotate: [0, 1, -1, 0]
+              }}
+              transition={{ 
+                duration: 5,
+                repeat: Infinity,
+                repeatType: "reverse"
+              }}
+              className="relative"
+            >
+              <div className="absolute -inset-x-4 -inset-y-10 bg-primary/5 blur-2xl rounded-full -z-10" />
+              <div className="relative flex flex-col items-center">
+                <motion.span
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="text-sm font-medium text-primary/80 tracking-wider uppercase mb-2"
+                >
+                  What I Value
+                </motion.span>
+                <h2 className="text-5xl font-bold text-center bg-gradient-to-r from-primary via-primary/80 to-primary/50 bg-clip-text text-transparent">
+                  Work Philosophy
+                </h2>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {workValues.map((value, index) => (
+              <motion.div
+                key={value.title}
+                variants={item}
+                whileHover={{ scale: 1.02 }}
+                className="p-6 bg-card/50 rounded-lg border border-primary/10 hover:border-primary/30 transition-all duration-300 group"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:scale-110 transition-transform">
+                    {value.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                      {value.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {value.description}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
         {/* Skills Section */}
         <motion.div
           variants={container}
@@ -225,7 +328,7 @@ export default function About() {
               </div>
             </motion.div>
           </motion.div>
-          
+
           {/* Frontend */}
           <motion.div 
             variants={item} 
@@ -440,7 +543,7 @@ export default function About() {
           </motion.div>
         </motion.div>
 
-        {/* Professional Focus */}
+        {/* Collaboration Section */}
         <motion.div
           variants={container}
           initial="hidden"
@@ -475,110 +578,45 @@ export default function About() {
                   transition={{ delay: 0.2 }}
                   className="text-sm font-medium text-primary/80 tracking-wider uppercase mb-2"
                 >
-                  Core Competencies
+                  Let's Work Together
                 </motion.span>
                 <h2 className="text-5xl font-bold text-center bg-gradient-to-r from-primary via-primary/80 to-primary/50 bg-clip-text text-transparent">
-                  Professional Focus
+                  Project Collaboration
                 </h2>
               </div>
             </motion.div>
           </motion.div>
-          
-          <motion.div variants={item}>
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  icon: <LayersIcon className="w-6 h-6 text-primary" />,
-                  title: "Architecture & Design",
-                  items: [
-                    "Scalable application architectures",
-                    "Clean code principles",
-                    "Reusable component libraries",
-                    "Real-time applications"
-                  ]
-                },
-                {
-                  icon: <GearIcon className="w-6 h-6 text-primary" />,
-                  title: "Performance",
-                  items: [
-                    "Angular 17 optimization",
-                    "Database optimization",
-                    "Caching strategies",
-                    "State management"
-                  ]
-                },
-                {
-                  icon: <LockClosedIcon className="w-6 h-6 text-primary" />,
-                  title: "Security",
-                  items: [
-                    "Authentication systems",
-                    "OWASP guidelines",
-                    "Code quality assurance",
-                    "Row Level Security"
-                  ]
-                }
-              ].map((focus, index) => (
-                <motion.div
-                  key={focus.title}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.2 }}
-                  whileHover={{ 
-                    scale: 1.05,
-                    transition: { type: "spring", stiffness: 300 }
-                  }}
-                >
-                  <Card className="overflow-hidden border-primary/10 hover:border-primary/30 transition-all duration-300 group hover:shadow-lg hover:shadow-primary/5 relative h-full">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <CardContent className="p-8 space-y-4">
-                      <motion.div 
-                        whileHover={{ scale: 1.1 }}
-                        animate={{ 
-                          rotate: [0, 360],
-                          scale: [1, 1.1, 1]
-                        }}
-                        transition={{ 
-                          rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-                          scale: { duration: 2, repeat: Infinity, repeatType: "reverse" }
-                        }}
-                        className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center"
-                      >
-                        {focus.icon}
-                      </motion.div>
-                      <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
-                        {focus.title}
-                      </h3>
-                      <ul className="space-y-3 text-muted-foreground">
-                        {focus.items.map((item, itemIndex) => (
-                          <motion.li
-                            key={item}
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ delay: (index * 0.2) + (itemIndex * 0.1) }}
-                            whileHover={{ x: 10 }}
-                            className="flex items-center gap-2"
-                          >
-                            <motion.div 
-                              className="w-1.5 h-1.5 rounded-full bg-primary"
-                              animate={{ 
-                                scale: [1, 1.5, 1],
-                                opacity: [1, 0.5, 1]
-                              }}
-                              transition={{ 
-                                duration: 2,
-                                repeat: Infinity,
-                                delay: itemIndex * 0.2
-                              }}
-                            />
-                            <span className="group-hover:text-primary/90 transition-colors">{item}</span>
-                          </motion.li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
+
+          <motion.div variants={item} className="max-w-3xl mx-auto text-center space-y-8">
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              I'm always excited to collaborate on innovative projects. Whether you need a full-stack application, a responsive frontend, or a robust backend system, I'm here to help turn your vision into reality.
+            </p>
+            <div className="space-y-4">
+              <h3 className="text-2xl font-semibold text-primary">What I Bring to Your Project:</h3>
+              <ul className="text-lg text-muted-foreground space-y-2">
+                <li>✨ Modern and scalable architecture design</li>
+                <li>🚀 Performance-optimized implementations</li>
+                <li>🎨 Beautiful and intuitive user interfaces</li>
+                <li>🔒 Secure and reliable backend systems</li>
+                <li>📱 Responsive and cross-platform solutions</li>
+              </ul>
             </div>
+            <motion.div 
+              className="pt-8"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <Button 
+                size="lg" 
+                className="min-w-[200px] shadow-lg hover:shadow-primary/20 transition-all duration-300" 
+                asChild
+              >
+                <Link href="mailto:angelojohn0987@gmail.com" className="flex items-center gap-2">
+                  <EnvelopeClosedIcon className="w-4 h-4" />
+                  Start a Project
+                </Link>
+              </Button>
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>

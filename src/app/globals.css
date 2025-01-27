@@ -55,5 +55,36 @@
   }
   body {
     @apply bg-background text-foreground;
+    width: 100vw;
+    overflow-x: hidden;
+    position: relative;
   }
+}
+
+html {
+  scrollbar-gutter: stable;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.2);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.3);
 }
