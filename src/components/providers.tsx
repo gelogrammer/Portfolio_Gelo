@@ -3,22 +3,26 @@
 import { ThemeProvider } from "next-themes";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
+import { motion } from "framer-motion";
+import { LightBulb } from "@/components/light-bulb/light-bulb";
 
-function ThemeToggle() {
-  const { setTheme, theme } = useTheme();
+function ThemeSwitch() {
+  const { theme, setTheme } = useTheme();
+  const isOn = theme === "light";
 
   return (
-    <Button
-      variant="ghost"
-      size="icon"
+    <div 
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      className="w-12 h-12 bg-gradient-to-b from-muted to-muted-foreground/20 rounded-[6px] border-2 border-primary/20 flex justify-center items-center shadow-lg cursor-pointer hover:scale-105 transition-transform ml-6"
     >
-      <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-      <span className="sr-only">Toggle theme</span>
-    </Button>
+      <motion.div
+        className="relative w-4 h-6 bg-gradient-to-b from-primary-foreground to-primary/80 rounded cursor-pointer border border-primary/20"
+        animate={{ top: isOn ? "10%" : "0%" }}
+      >
+        <div className="absolute top-0 left-0 w-full h-[85%] bg-gradient-to-b from-primary-foreground to-background/80 rounded-[2px]" />
+      </motion.div>
+    </div>
   );
 }
 
@@ -32,7 +36,7 @@ function Navigation() {
         <div className="flex items-center gap-6">
           <Link href="/about">About</Link>
           <Link href="/projects">Projects</Link>
-          <ThemeToggle />
+          <ThemeSwitch />
         </div>
       </nav>
     </header>
@@ -48,6 +52,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       disableTransitionOnChange
     >
       <Navigation />
+      <LightBulb />
       {children}
     </ThemeProvider>
   );

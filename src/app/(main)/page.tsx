@@ -4,10 +4,13 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { LightBulb } from "@/components/light-bulb/light-bulb";
 
 export default function Home() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center p-6 md:p-24">
+      <LightBulb />
+      
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
