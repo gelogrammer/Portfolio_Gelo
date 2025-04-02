@@ -22,38 +22,48 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "Project 1",
-    description: "Description of project 1. Add a detailed description of what the project does and what technologies were used to build it.",
-    tech: ["Angular", "Supabase", "TailwindCSS"],
+    title: "Business Permit Management System",
+    description: "A centralized platform designed to streamline, digitize, and automate business operations, primarily focused on business permit applications, processing, and compliance monitoring.",
+    tech: ["React", "Firebase", "TailwindCSS", "TypeScript"],
     category: "Full Stack",
-    image: "/assets/images/projects/project1.png",
-    demoLink: "#",
+    image: "/assets/images/projects/BMS_SCREENSHOT.jpg",
+    demoLink: "https://quanby-bms.web.app/login",
     githubLink: "#",
     featured: true,
   },
   {
-    title: "Project 2",
-    description: "Description of project 2. Add a detailed description of what the project does and what technologies were used to build it.",
-    tech: ["Next.js", "TypeScript", "Shadcn UI"],
-    category: "Frontend",
-    image: "/assets/images/projects/project2.png",
-    demoLink: "#",
+    title: "Hotel Management System & Booking Website",
+    description: "A comprehensive hotel management system with an integrated online booking platform for The Apple Peach House, featuring reservation management, room availability tracking, and a user-friendly booking interface.",
+    tech: ["PHP", "MySQL", "JavaScript", "Bootstrap", "jQuery"],
+    category: "Full Stack",
+    image: "/assets/images/projects/Online_BookingPos.jpg",
+    demoLink: "https://peachperfect-online-booking.bsitcps.com",
     githubLink: "#",
     featured: true,
   },
   {
-    title: "Project 3",
-    description: "Description of project 3. Add a detailed description of what the project does and what technologies were used to build it.",
-    tech: ["Laravel", "PostgreSQL", "Bootstrap"],
+    title: "Hotel POS & Admin Dashboard",
+    description: "The administrative backend for The Apple Peach House hotel, providing staff with tools for managing reservations, room assignments, guest services, and generating business reports.",
+    tech: ["PHP", "MySQL", "JavaScript", "Bootstrap", "jQuery"],
     category: "Backend",
-    image: "/assets/images/projects/project3.png",
-    demoLink: "#",
+    image: "/assets/images/projects/POS_SCREENSHOT.jpg",
+    demoLink: "https://peachperfect.bsitcps.com/login",
     githubLink: "#",
     featured: false,
+  },
+  {
+    title: "Talk.twah Research Lab",
+    description: "A research platform advancing real-time speech analysis using deep reinforcement learning. This project collects voice samples to develop intelligent feedback systems for speech rate and emotion detection, helping train AI to better understand human speech patterns.",
+    tech: ["React", "Cloudflare Workers", "TensorFlow.js", "WebRTC", "Web Audio API"],
+    category: "AI & Research",
+    image: "/assets/images/projects/Talk_Twah.jpg",
+    demoLink: "https://voice-gateway.angelo-calleja14.workers.dev/login",
+    githubLink: "#",
+    featured: true,
   }
 ];
 
-const categories = ["All", "Full Stack", "Frontend", "Backend"];
+const categories = ["All", "Full Stack", "Frontend", "Backend", "AI & Research"];
 
 const container = {
   hidden: { opacity: 0 },
