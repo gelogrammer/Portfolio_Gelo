@@ -2,7 +2,33 @@
   "version": 1,
   "include": ["/*"],
   "exclude": [
-    "/_next/*",
+    "/_next/static/*",
     "/api/*"
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    },
+    {
+      "src": "/",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/about",
+      "dest": "/about.html"
+    },
+    {
+      "src": "/projects",
+      "dest": "/projects.html"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "status": 404,
+      "dest": "/404.html"
+    }
   ]
 } 
