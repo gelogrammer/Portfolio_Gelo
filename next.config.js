@@ -4,9 +4,7 @@ const nextConfig = {
   swcMinify: true,
   images: {
     unoptimized: true,
-  },
-  output: 'export',
-  distDir: 'out',
+  }
 }
 
-module.exports = nextConfig 
+module.exports = nextConfig

@@ -55,8 +55,7 @@ const skills = {
     { name: 'Express', level: 'Advanced', icon: <CodeIcon className="w-8 h-8" /> },
     { name: 'Python', level: 'Intermediate', icon: <CodeIcon className="w-8 h-8" /> },
     { name: 'MySQL', level: 'Expert', icon: <TableIcon className="w-8 h-8" /> },
-    { name: 'PostgreSQL', level: 'Expert', icon: <TableIcon className="w-8 h-8" /> },
-    { name: 'Supabase', level: 'Expert', icon: <TableIcon className="w-8 h-8" /> }
+    { name: 'PostgreSQL', level: 'Expert', icon: <TableIcon className="w-8 h-8" /> }
   ],
   devops: [
     { name: 'Git', level: 'Expert', icon: <CodeIcon className="w-8 h-8" /> },
