@@ -106,15 +106,15 @@ export default function Projects() {
       {/* Hero Section with Parallax */}
       <motion.div
         style={{ opacity, scale }}
-        className="relative h-[50vh] flex items-center justify-center bg-gradient-to-b from-background to-background/50 overflow-hidden"
+        className="relative h-[40vh] md:h-[50vh] flex items-center justify-center bg-gradient-to-b from-background to-background/50 overflow-hidden"
       >
         <div className="absolute inset-0 bg-grid-pattern opacity-5" />
-        <div className="container relative space-y-8 text-center px-4">
+        <div className="container relative space-y-6 md:space-y-8 text-center px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="space-y-4"
+            className="space-y-3 md:space-y-4"
           >
             <motion.div
               animate={{ 
@@ -129,11 +129,11 @@ export default function Projects() {
               className="relative inline-block"
             >
               <div className="absolute -inset-x-4 -inset-y-2 bg-primary/5 blur-2xl rounded-full -z-10" />
-              <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary/50 bg-clip-text text-transparent">
+              <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary/50 bg-clip-text text-transparent">
                 My Projects
               </h1>
             </motion.div>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Explore my portfolio of projects showcasing my expertise in full-stack development,
               from responsive frontends to scalable backend solutions.
             </p>
@@ -142,12 +142,12 @@ export default function Projects() {
       </motion.div>
 
       {/* Filters and Search Section */}
-      <div className="container py-12">
-        <div className="flex flex-col md:flex-row gap-4 items-center justify-between mb-8">
+      <div className="container py-8 md:py-12 px-4 md:px-6">
+        <div className="flex flex-col gap-4 items-start md:items-center md:flex-row md:justify-between mb-8">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="flex flex-wrap gap-2"
+            className="w-full md:w-auto flex flex-wrap gap-2"
           >
             {categories.map((category) => (
               <Button
@@ -185,12 +185,12 @@ export default function Projects() {
             variants={container}
             initial="hidden"
             animate="show"
-            className="mb-12"
+            className="mb-8 md:mb-12"
           >
-            <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2">
+            <h2 className="text-xl md:text-2xl font-semibold mb-4 md:mb-6 flex items-center gap-2">
               <span className="text-primary">Featured</span> Projects
             </h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-6">
               {projects.filter(p => p.featured).map((project) => (
                 <FeaturedProjectCard key={project.title} project={project} />
               ))}
@@ -203,7 +203,7 @@ export default function Projects() {
           variants={container}
           initial="hidden"
           animate="show"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
         >
           {filteredProjects.map((project) => (
             <ProjectCard key={project.title} project={project} />
@@ -214,7 +214,7 @@ export default function Projects() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center py-12"
+            className="text-center py-8 md:py-12"
           >
             <p className="text-muted-foreground text-lg">No projects found matching your criteria.</p>
           </motion.div>
@@ -232,7 +232,7 @@ function FeaturedProjectCard({ project }: { project: Project }) {
     >
       <Card className="h-full overflow-hidden border border-primary/10 bg-card/50 hover:bg-card/80 transition-all duration-500 hover:shadow-lg hover:shadow-primary/5">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="relative h-64 md:h-full overflow-hidden">
+          <div className="relative h-56 md:h-64 overflow-hidden">
             <Image
               src={project.image}
               alt={project.title}
@@ -240,34 +240,29 @@ function FeaturedProjectCard({ project }: { project: Project }) {
               className="object-cover transition-transform duration-500 group-hover:scale-110"
             />
           </div>
-          <div className="flex flex-col p-6">
-            <Badge variant="outline" className="w-fit mb-4">
+          <div className="flex flex-col p-4 md:p-6">
+            <Badge variant="outline" className="w-fit mb-3 md:mb-4">
               {project.category}
             </Badge>
-            <h3 className="text-2xl font-semibold mb-2">{project.title}</h3>
-            <p className="text-muted-foreground mb-4">{project.description}</p>
-            <div className="flex flex-wrap gap-2 mb-6">
+            <h3 className="text-xl md:text-2xl font-semibold mb-2">{project.title}</h3>
+            <p className="text-sm md:text-base text-muted-foreground mb-4 line-clamp-3 md:line-clamp-4">{project.description}</p>
+            <div className="flex flex-wrap gap-2 mb-4 md:mb-6">
               {project.tech.map((tech: string) => (
-                <span
-                  key={tech}
-                  className="px-2 py-1 bg-primary/10 rounded-md text-sm font-medium"
-                >
+                <Badge key={tech} variant="secondary" className="bg-primary/5 text-xs">
                   {tech}
-                </span>
+                </Badge>
               ))}
             </div>
-            <div className="mt-auto flex gap-3">
-              <Button asChild variant="default" size="sm" className="flex-1">
-                <Link href={project.demoLink}>
-                  <ExternalLinkIcon className="mr-2 h-4 w-4" />
-                  Live Demo
-                </Link>
+            <div className="mt-auto flex flex-wrap gap-2">
+              <Button asChild size="sm" className="flex-1 sm:flex-none gap-1">
+                <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                  <ExternalLinkIcon className="h-4 w-4" /> Demo
+                </a>
               </Button>
-              <Button asChild variant="outline" size="sm" className="flex-1">
-                <Link href={project.githubLink}>
-                  <GitHubLogoIcon className="mr-2 h-4 w-4" />
-                  Source
-                </Link>
+              <Button asChild size="sm" variant="outline" className="flex-1 sm:flex-none gap-1">
+                <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                  <GitHubLogoIcon className="h-4 w-4" /> Code
+                </a>
               </Button>
             </div>
           </div>

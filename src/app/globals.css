@@ -88,3 +88,31 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--primary) / 0.3);
 }
+
+/* Mobile improvements */
+@media (max-width: 768px) {
+  /* Better tap targets */
+  button, a {
+    @apply min-h-10;
+  }
+  
+  /* Prevent text from being too small */
+  html {
+    font-size: 16px;
+  }
+  
+  /* Improve container padding for smaller screens */
+  .container {
+    @apply px-4;
+  }
+  
+  /* Handle toolbar overflow on small devices */
+  input, select, textarea {
+    font-size: 16px; /* Prevents iOS zoom on focus */
+  }
+  
+  /* Fix fixed positioning on mobile */
+  .fixed {
+    -webkit-backface-visibility: hidden;
+  }
+}

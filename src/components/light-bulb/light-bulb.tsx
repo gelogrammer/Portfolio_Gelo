@@ -31,7 +31,7 @@ export function LightBulb() {
   if (!mounted) return null;
 
   return (
-    <div className="fixed top-20 right-8 z-50">
+    <div className="fixed top-20 right-8 z-50 hidden md:block">
       {/* Wire */}
       <div className="absolute left-1/2 -top-36 w-1 h-48 bg-primary/80 -translate-x-1/2" />
 
