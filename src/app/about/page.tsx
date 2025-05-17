@@ -99,7 +99,7 @@ const socialLinks = [
   },
   {
     name: "LinkedIn",
-    url: "https://linkedin.com/in/yourusername",
+    url: "https://www.linkedin.com/in/angelo-john-calleja-81312a319/",
     icon: <LinkedInLogoIcon className="w-6 h-6" />,
     color: "#0A66C2"
   },
