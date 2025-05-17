@@ -18,7 +18,8 @@ import {
   RocketIcon,
   HeartIcon,
   TimerIcon,
-  ChatBubbleIcon
+  ChatBubbleIcon,
+  FileTextIcon
 } from "@radix-ui/react-icons";
 import Link from "next/link";
 import Image from "next/image";
@@ -102,6 +103,12 @@ const socialLinks = [
     url: "https://www.linkedin.com/in/angelo-john-calleja-81312a319/",
     icon: <LinkedInLogoIcon className="w-6 h-6" />,
     color: "#0A66C2"
+  },
+  {
+    name: "Resume",
+    url: "https://www.canva.com/design/DAGm3E2JxIs/7vwuUrymS6-5u5Yo5IV8KQ/edit?utm_content=DAGm3E2JxIs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
+    icon: <FileTextIcon className="w-6 h-6" />,
+    color: "#00C4CC"
   },
   {
     name: "Email",
