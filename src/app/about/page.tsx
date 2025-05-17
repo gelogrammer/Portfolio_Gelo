@@ -71,22 +71,22 @@ const workValues = [
   {
     icon: <RocketIcon className="w-6 h-6" />,
     title: "Innovation",
-    description: "Always exploring cutting-edge technologies and creative solutions to complex problems."
+    description: "Always exploring cutting-edge technologies and creative solutions to complex, evolving problems and challenges."
   },
   {
     icon: <HeartIcon className="w-6 h-6" />,
     title: "Quality",
-    description: "Committed to writing clean, maintainable code with comprehensive testing and documentation."
+    description: "Committed to writing clean, maintainable, scalable code with comprehensive testing and documentation."
   },
   {
     icon: <TimerIcon className="w-6 h-6" />,
     title: "Efficiency",
-    description: "Focus on optimizing performance and delivering results within project timelines."
+    description: "Focus on optimizing performance and delivering results that meet or exceed expectations within project timelines."
   },
   {
     icon: <ChatBubbleIcon className="w-6 h-6" />,
     title: "Communication",
-    description: "Strong emphasis on clear, proactive communication and collaborative problem-solving."
+    description: "Strong stakeholder management with an emphasis on clear, proactive communication and collaborative problem-solving."
   }
 ];
 
@@ -166,7 +166,7 @@ export default function About() {
                   </span>
                   <div className="flex items-center justify-center md:justify-start gap-1.5 text-xs md:text-sm border border-primary/20 px-3 py-1 rounded-full bg-background/95 shadow-sm hover:border-primary/40 transition-colors mt-2 md:mt-0 mx-auto md:mx-0 w-fit">
                     <HomeIcon className="w-3 h-3 md:w-3.5 md:h-3.5 text-primary" />
-                    <span className="text-muted-foreground">Legazpi City, Philippines</span>
+                    <span className="text-muted-foreground">Manila, Philippines</span>
                   </div>
                 </motion.div>
                 <motion.p 
