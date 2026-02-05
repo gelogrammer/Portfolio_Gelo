@@ -3,96 +3,223 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
-import { LightBulb } from "@/components/light-bulb/light-bulb";
+import { Terminal, Code, Server, Database, Cloud, GitBranch } from "lucide-react";
+import { MetricsDashboard } from "@/components/metrics/MetricsDashboard";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-6 md:p-24">
-      <LightBulb />
-      
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="flex flex-col md:flex-row items-center gap-8 md:gap-16 max-w-5xl mx-auto"
-      >
-        {/* Profile Image Section */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="relative w-48 h-48 md:w-72 md:h-72"
+    <main className="min-h-screen p-4 md:p-8 relative">
+      <div className="container mx-auto max-w-7xl">
+        {/* Hero Section - Terminal Style */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mb-12"
         >
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-primary/50 blur-3xl opacity-20 animate-pulse" />
-          <Image
-            src="/assets/images/profile/me.JPEG"
-            alt="Angelo John S. Calleja"
-            width={288}
-            height={288}
-            priority
-            className="rounded-full object-cover border-4 border-primary/20 shadow-2xl"
-          />
-        </motion.div>
+          <div className="terminal-box p-8 md:p-12">
+            {/* Terminal Header */}
+            <div className="flex items-center gap-2 mb-6 text-primary">
+              <Terminal className="w-5 h-5" />
+              <span className="text-sm font-mono">guest@angelo-portfolio:~$</span>
+              <span className="terminal-cursor"></span>
+            </div>
 
-        {/* Content Section */}
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-          className="space-y-8 text-center md:text-left flex-1 max-w-2xl"
-        >
-          <div className="space-y-6">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <h2 className="text-sm font-medium text-primary/80 tracking-[0.2em] uppercase mb-3">
-                Welcome to my portfolio
-              </h2>
-              <h1 className="text-4xl md:text-5xl font-bold leading-tight md:leading-tight">
-                Angelo John{" "}
-                <span className="bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-transparent">
-                  S. Calleja
-                </span>
-              </h1>
-            </motion.div>
-            
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="text-base md:text-lg text-muted-foreground/90 leading-relaxed"
-            >
-              Full Stack Developer specializing in Angular & Supabase, crafting elegant solutions for modern web applications.
-            </motion.p>
+            {/* Main Content */}
+            <div className="space-y-6">
+              <div>
+                <motion.h1
+                  className="text-4xl md:text-6xl font-bold font-mono mb-2"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  <span className="text-neon-green crt-glow">$</span>{" "}
+                  <span className="text-foreground">whoami</span>
+                </motion.h1>
+                <motion.div
+                  className="text-xl md:text-2xl font-mono text-muted-foreground"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  <span className="text-neon-cyan">Angelo John S. Calleja</span>
+                </motion.div>
+              </div>
+
+              <motion.div
+                className="space-y-2 font-mono text-sm md:text-base"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6 }}
+              >
+                <div className="flex gap-2">
+                  <span className="text-terminal-green">●</span>
+                  <span className="text-foreground">Role: Full Stack Developer & DevOps Engineer</span>
+                </div>
+                <div className="flex gap-2">
+                  <span className="text-neon-cyan">●</span>
+                  <span className="text-foreground">Stack: Angular | Laravel | Docker | AWS</span>
+                </div>
+                <div className="flex gap-2">
+                  <span className="text-neon-magenta">●</span>
+                  <span className="text-foreground">Status: Available for opportunities</span>
+                </div>
+              </motion.div>
+
+              {/* Action Buttons */}
+              <motion.div
+                className="flex flex-wrap gap-4 pt-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 }}
+              >
+                <Link href="/projects">
+                  <Button className="neon-border bg-primary/10 hover:bg-primary/20 text-primary font-mono">
+                    <Code className="w-4 h-4 mr-2" />
+                    ./view-projects.sh
+                  </Button>
+                </Link>
+                <Link href="/about">
+                  <Button variant="outline" className="border-neon-cyan text-neon-cyan hover:bg-neon-cyan/10 font-mono">
+                    <Server className="w-4 h-4 mr-2" />
+                    cat about.txt
+                  </Button>
+                </Link>
+                <Link href="/contact">
+                  <Button variant="outline" className="border-muted-foreground hover:border-primary font-mono">
+                    <Terminal className="w-4 h-4 mr-2" />
+                    ssh contact
+                  </Button>
+                </Link>
+              </motion.div>
+            </div>
           </div>
+        </motion.section>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="flex flex-wrap gap-4 justify-center md:justify-start pt-2"
-          >
-            <Button 
-              size="lg" 
-              className="min-w-[140px] shadow-lg hover:shadow-primary/20 transition-all duration-300" 
-              asChild
+        {/* System Architecture Diagram */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 0.8 }}
+          className="mb-12"
+        >
+          <h2 className="text-2xl font-mono text-primary mb-6 flex items-center gap-2">
+            <Server className="w-6 h-6" />
+            SYSTEM ARCHITECTURE
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Frontend Layer */}
+            <motion.div
+              className="terminal-box p-6 hover:border-neon-cyan/50 transition-all duration-300"
+              whileHover={{ scale: 1.02 }}
             >
-              <Link href="/projects">View Projects</Link>
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="min-w-[140px] hover:shadow-lg transition-all duration-300" 
-              asChild
+              <div className="flex items-center gap-2 mb-4">
+                <Code className="w-5 h-5 text-neon-cyan" />
+                <h3 className="font-mono text-lg text-neon-cyan">Frontend Layer</h3>
+              </div>
+              <div className="space-y-2 text-sm font-mono text-muted-foreground">
+                <div>→ Angular Framework</div>
+                <div>→ TypeScript</div>
+                <div>→ Responsive UI/UX</div>
+                <div>→ State Management</div>
+              </div>
+              <div className="mt-4 text-xs font-mono text-terminal-green">
+                [STATUS: OPERATIONAL]
+              </div>
+            </motion.div>
+
+            {/* Backend Layer */}
+            <motion.div
+              className="terminal-box p-6 hover:border-neon-magenta/50 transition-all duration-300"
+              whileHover={{ scale: 1.02 }}
             >
-              <Link href="/about">About Me</Link>
-            </Button>
-          </motion.div>
-        </motion.div>
-      </motion.div>
+              <div className="flex items-center gap-2 mb-4">
+                <Database className="w-5 h-5 text-neon-magenta" />
+                <h3 className="font-mono text-lg text-neon-magenta">Backend Layer</h3>
+              </div>
+              <div className="space-y-2 text-sm font-mono text-muted-foreground">
+                <div>→ Laravel Framework</div>
+                <div>→ RESTful APIs</div>
+                <div>→ MySQL Database</div>
+                <div>→ Authentication</div>
+              </div>
+              <div className="mt-4 text-xs font-mono text-terminal-green">
+                [STATUS: OPERATIONAL]
+              </div>
+            </motion.div>
+
+            {/* DevOps Layer */}
+            <motion.div
+              className="terminal-box p-6 hover:border-neon-green/50 transition-all duration-300"
+              whileHover={{ scale: 1.02 }}
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <Cloud className="w-5 h-5 text-neon-green" />
+                <h3 className="font-mono text-lg text-neon-green">DevOps Layer</h3>
+              </div>
+              <div className="space-y-2 text-sm font-mono text-muted-foreground">
+                <div>→ Docker Containers</div>
+                <div>→ CI/CD Pipelines</div>
+                <div>→ Git Version Control</div>
+                <div>→ Cloud Deployment</div>
+              </div>
+              <div className="mt-4 text-xs font-mono text-terminal-green">
+                [STATUS: OPERATIONAL]
+              </div>
+            </motion.div>
+          </div>
+        </motion.section>
+
+        {/* Metrics Dashboard */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+        >
+          <MetricsDashboard />
+        </motion.section>
+
+        {/* Quick Links */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.4, duration: 0.8 }}
+          className="mt-12"
+        >
+          <div className="terminal-box p-6">
+            <h3 className="text-sm font-mono text-primary mb-4 flex items-center gap-2">
+              <GitBranch className="w-4 h-4" />
+              QUICK ACCESS
+            </h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm font-mono">
+              <Link href="/projects" className="text-neon-cyan hover:text-neon-cyan/80 transition-colors">
+                → Projects
+              </Link>
+              <Link href="/about" className="text-neon-cyan hover:text-neon-cyan/80 transition-colors">
+                → About
+              </Link>
+              <Link href="/contact" className="text-neon-cyan hover:text-neon-cyan/80 transition-colors">
+                → Contact
+              </Link>
+              <button
+                onClick={() => {
+                  const event = new KeyboardEvent('keydown', {
+                    key: '`',
+                    ctrlKey: true,
+                    bubbles: true
+                  });
+                  window.dispatchEvent(event);
+                }}
+                className="text-neon-green hover:text-neon-green/80 transition-colors text-left"
+              >
+                → Terminal
+              </button>
+            </div>
+          </div>
+        </motion.section>
+      </div>
     </main>
   );
-} 
+}

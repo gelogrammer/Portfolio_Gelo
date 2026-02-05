@@ -5,8 +5,9 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
-import { LightBulb } from "@/components/light-bulb/light-bulb";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons";
 
 function ThemeSwitch() {
   const { theme, setTheme } = useTheme();
@@ -15,7 +16,7 @@ function ThemeSwitch() {
   return (
     <div className="flex items-center">
       <div className="group relative">
-        <div 
+        <div
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           className="w-12 h-12 bg-gradient-to-b from-muted to-muted-foreground/20 rounded-[6px] border-2 border-primary/20 flex justify-center items-center shadow-lg cursor-pointer hover:scale-105 transition-transform"
         >
@@ -49,69 +50,17 @@ function ThemeSwitch() {
   );
 }
 
-function Navigation() {
-  return (
-    <motion.header 
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      className="fixed top-0 w-full border-b bg-background/80 backdrop-blur-sm z-50"
-    >
-      <nav className="container flex h-16 items-center justify-between">
-        <Link 
-          href="/" 
-          className="text-xl font-bold relative group flex items-center gap-2"
-        >
-          <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent tracking-wider">
-            AJSC
-          </span>
-          <motion.div 
-            className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"
-            whileHover={{ width: "100%" }}
-          />
-        </Link>
-        <div className="flex items-center gap-8">
-          <NavLink href="/about">About</NavLink>
-          <NavLink href="/projects">Projects</NavLink>
-          <ThemeSwitch />
-        </div>
-      </nav>
-    </motion.header>
-  );
-}
-
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
-  const pathname = usePathname();
-  const isActive = pathname === href;
-
-  return (
-    <Link 
-      href={href} 
-      className={`relative group px-3 py-1.5 transition-colors ${isActive ? 'text-primary font-medium' : 'hover:text-primary'}`}
-    >
-      <span className="relative z-10">{children}</span>
-      {isActive && (
-        <motion.div
-          layoutId="activeIndicator"
-          className="absolute inset-0 bg-primary/10 rounded-lg -z-10"
-          transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
-        />
-      )}
-    </Link>
-  );
-}
-
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider
       attribute="class"
-      defaultTheme="system"
+      defaultTheme="dark"
       enableSystem
       disableTransitionOnChange
     >
-      <Navigation />
-      <LightBulb />
-      {children}
+      <div className="relative min-h-screen">
+        {children}
+      </div>
     </ThemeProvider>
   );
 } 

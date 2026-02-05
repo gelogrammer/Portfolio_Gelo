@@ -126,15 +126,15 @@ export default function About() {
       {/* Hero Section with Parallax */}
       <motion.div
         style={{ opacity, scale }}
-        className="relative h-screen flex items-center justify-center bg-gradient-to-b from-background to-background/50 overflow-hidden"
+        className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-background/50 overflow-hidden py-24 md:py-0"
       >
         <div className="absolute inset-0 bg-grid-pattern opacity-5" />
-        <div className="container relative flex flex-col md:flex-row gap-12 items-center justify-center px-4 md:px-8 lg:px-24">
+        <div className="container relative flex flex-col md:flex-row gap-8 md:gap-12 items-center justify-center px-4 md:px-8 lg:px-24 mt-16 md:mt-32">
           <motion.div 
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="relative"
+            className="relative w-32 h-32 md:w-64 md:h-64 lg:w-72 lg:h-72 flex-shrink-0"
           >
             <Image
               src="/assets/images/profile/me.JPEG"
@@ -144,27 +144,27 @@ export default function About() {
               className="rounded-full object-cover border-4 border-primary/20 shadow-2xl relative z-10"
             />
           </motion.div>
-          <div className="space-y-8 text-left max-w-4xl">
+          <div className="space-y-4 md:space-y-8 text-center md:text-left max-w-2xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="space-y-6"
+              className="space-y-3 md:space-y-6"
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary/50 bg-clip-text text-transparent tracking-normal leading-normal pb-4 px-1">
+              <h1 className="text-2xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary/50 bg-clip-text text-transparent tracking-normal leading-normal pb-4">
                 About Me
               </h1>
-              <div className="space-y-4">
+              <div className="space-y-3 md:space-y-4">
                 <motion.div 
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
-                  className="flex items-center gap-3"
+                  className="flex flex-col md:flex-row items-center gap-2 md:gap-3"
                 >
-                  <span className="text-2xl font-semibold bg-gradient-to-r from-primary/80 to-primary/50 bg-clip-text text-transparent">
+                  <span className="text-lg md:text-2xl font-semibold bg-gradient-to-r from-primary/80 to-primary/50 bg-clip-text text-transparent">
                     Full Stack Developer
                   </span>
-                  <div className="flex items-center gap-1.5 text-sm border border-primary/20 px-3 py-1 rounded-full bg-background/95 shadow-sm hover:border-primary/40 transition-colors">
-                    <HomeIcon className="w-3.5 h-3.5 text-primary" />
+                  <div className="flex items-center gap-1.5 text-xs md:text-sm border border-primary/20 px-2 md:px-3 py-1 rounded-full bg-background/95 shadow-sm hover:border-primary/40 transition-colors">
+                    <HomeIcon className="w-3 h-3 md:w-3.5 md:h-3.5 text-primary" />
                     <span className="text-muted-foreground">Legazpi City, Philippines</span>
                   </div>
                 </motion.div>
@@ -172,7 +172,7 @@ export default function About() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="text-xl text-muted-foreground/90 leading-relaxed"
+                  className="text-sm md:text-xl text-muted-foreground/90 leading-relaxed"
                 >
                   Hello! I'm Angelo, a passionate Full Stack Developer with over 2 years of experience in building modern web applications. I specialize in creating <span className="text-primary font-medium">scalable</span>, <span className="text-primary font-medium">user-friendly</span>, and <span className="text-primary font-medium">high-performance</span> solutions.
                 </motion.p>
@@ -180,7 +180,7 @@ export default function About() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="text-xl text-muted-foreground/90 leading-relaxed"
+                  className="text-sm md:text-xl text-muted-foreground/90 leading-relaxed"
                 >
                   My expertise lies in <span className="text-primary font-medium">Angular</span> for frontend development and <span className="text-primary font-medium">Laravel</span> for backend systems. I'm passionate about creating seamless user experiences and robust architectures that scale.
                 </motion.p>
@@ -190,7 +190,7 @@ export default function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="flex gap-4"
+              className="flex flex-wrap justify-center md:justify-start gap-3"
             >
               {socialLinks.map((link) => (
                 <motion.a
@@ -213,14 +213,14 @@ export default function About() {
       </motion.div>
 
       {/* Content Sections */}
-      <div className="container py-24 space-y-32">
+      <div className="container py-16 md:py-24 space-y-24 md:space-y-32 px-4 md:px-8">
         {/* Work Values Section */}
         <motion.div
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="space-y-16 relative"
+          className="space-y-12 md:space-y-16 relative"
         >
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent rounded-3xl blur-3xl -z-10" />
           <motion.div
@@ -290,7 +290,7 @@ export default function About() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="space-y-16 relative"
+          className="space-y-12 md:space-y-16 relative"
         >
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent rounded-3xl blur-3xl -z-10" />
           <motion.div
@@ -548,7 +548,7 @@ export default function About() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="space-y-16 relative"
+          className="space-y-12 md:space-y-16 relative"
         >
           <div className="absolute inset-0 bg-gradient-to-t from-primary/5 via-transparent to-transparent rounded-3xl blur-3xl -z-10" />
           <motion.div

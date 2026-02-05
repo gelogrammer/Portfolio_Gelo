@@ -54,6 +54,23 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        chart: {
+          "1": "hsl(var(--chart-1))",
+          "2": "hsl(var(--chart-2))",
+          "3": "hsl(var(--chart-3))",
+          "4": "hsl(var(--chart-4))",
+          "5": "hsl(var(--chart-5))"
+        },
+        // Cyberpunk Neon Colors
+        "neon-green": "hsl(var(--neon-green))",
+        "neon-cyan": "hsl(var(--neon-cyan))",
+        "neon-magenta": "hsl(var(--neon-magenta))",
+        "neon-yellow": "hsl(var(--neon-yellow))",
+        // Terminal Colors
+        "terminal-green": "hsl(var(--terminal-green))",
+        "terminal-amber": "hsl(var(--terminal-amber))",
+        "terminal-red": "hsl(var(--terminal-red))",
+        "terminal-blue": "hsl(var(--terminal-blue))",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -69,10 +86,33 @@ const config: Config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-20px)" },
+        },
+        glow: {
+          "0%, 100%": { opacity: "1", filter: "brightness(1)" },
+          "50%": { opacity: "0.8", filter: "brightness(1.2)" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "-1000px 0" },
+          "100%": { backgroundPosition: "1000px 0" },
+        },
+        "gradient-shift": {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        float: "float 6s ease-in-out infinite",
+        glow: "glow 2s ease-in-out infinite",
+        shimmer: "shimmer 2s linear infinite",
+        "gradient-shift": "gradient-shift 3s ease infinite",
+      },
+      backdropBlur: {
+        xs: "2px",
       },
     },
   },
