@@ -55,15 +55,19 @@ export default function Home() {
               >
                 <div className="flex gap-2">
                   <span className="text-terminal-green">●</span>
-                  <span className="text-foreground">Role: Full Stack Developer & DevOps Engineer</span>
+                  <span className="text-foreground">Role: Software Engineer | DevOps Engineer @ Accenture</span>
                 </div>
                 <div className="flex gap-2">
                   <span className="text-neon-cyan">●</span>
-                  <span className="text-foreground">Stack: Angular | Laravel | Docker | AWS</span>
+                  <span className="text-foreground">Stack: Angular 17 | Supabase | Python | CI/CD</span>
                 </div>
                 <div className="flex gap-2">
                   <span className="text-neon-magenta">●</span>
-                  <span className="text-foreground">Status: Available for opportunities</span>
+                  <span className="text-foreground">Education: BS Computer Science - Bicol University</span>
+                </div>
+                <div className="flex gap-2">
+                  <span className="text-neon-yellow">●</span>
+                  <span className="text-foreground">Location: Zone V Libon, Albay</span>
                 </div>
               </motion.div>
 
@@ -74,25 +78,25 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
               >
-                <Link href="/projects">
-                  <Button className="neon-border bg-primary/10 hover:bg-primary/20 text-primary font-mono">
-                    <Code className="w-4 h-4 mr-2" />
-                    ./view-projects.sh
-                  </Button>
-                </Link>
-                <Link href="/about">
-                  <Button variant="outline" className="border-neon-cyan text-neon-cyan hover:bg-neon-cyan/10 font-mono">
-                    <Server className="w-4 h-4 mr-2" />
-                    cat about.txt
-                  </Button>
-                </Link>
-                <Link href="/contact">
-                  <Button variant="outline" className="border-muted-foreground hover:border-primary font-mono">
-                    <Terminal className="w-4 h-4 mr-2" />
-                    ssh contact
-                  </Button>
-                </Link>
-              </motion.div>
+                  <Link href="/projects">
+                    <Button className="neon-border bg-primary/10 hover:bg-primary/20 text-primary font-mono">
+                      <Code className="w-4 h-4 mr-2" />
+                      ./view-projects.sh
+                    </Button>
+                  </Link>
+                  <Link href="/about">
+                    <Button variant="outline" className="border-neon-cyan text-neon-cyan hover:bg-neon-cyan/10 font-mono">
+                      <Server className="w-4 h-4 mr-2" />
+                      cat about.txt
+                    </Button>
+                  </Link>
+                  <Link href="/monitor">
+                    <Button variant="outline" className="border-muted-foreground hover:border-primary font-mono">
+                      <Terminal className="w-4 h-4 mr-2" />
+                      ssh contact
+                    </Button>
+                  </Link>
+                </motion.div>
             </div>
           </div>
         </motion.section>

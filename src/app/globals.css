@@ -440,6 +440,102 @@ body {
   }
 }
 
+/* Living Pipeline Utilities */
+@layer utilities {
+  .octagon-clip {
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  }
+
+  .hexagon-clip {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+
+  .action-green-glow {
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.4), 0 0 40px rgba(0, 255, 65, 0.2);
+  }
+
+  .cyber-blue-glow {
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.4), 0 0 40px rgba(0, 217, 255, 0.2);
+  }
+
+  .obsidian-surface {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .data-stream {
+    background: linear-gradient(to right, 
+      transparent 0%, 
+      rgba(0, 255, 65, 0.1) 25%, 
+      rgba(0, 255, 65, 0.3) 50%, 
+      rgba(0, 255, 65, 0.1) 75%, 
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: stream-flow 2s linear infinite;
+  }
+
+  @keyframes stream-flow {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
+  }
+
+  .hud-metric {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.05em;
+  }
+
+  .industrial-border {
+    position: relative;
+  }
+
+  .industrial-border::before,
+  .industrial-border::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border: 2px solid currentColor;
+  }
+
+  .industrial-border::before {
+    top: -1px;
+    left: -1px;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .industrial-border::after {
+    bottom: -1px;
+    right: -1px;
+    border-left: none;
+    border-top: none;
+  }
+
+  .terminal-text {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    font-variant-ligatures: none;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* High-Tech Obsidian Color Extensions */
+@layer base {
+  :root {
+    --action-green: #00FF41;
+    --cyber-blue: #00D9FF;
+    --warning-amber: #FFB800;
+    --danger-red: #FF1744;
+    --obsidian-deep: #0A0E1A;
+    --obsidian-elevated: #12161F;
+  }
+}
+
 /* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
 
@@ -454,5 +550,9 @@ body {
 
   .scanlines::before {
     display: none;
+  }
+
+  .data-stream {
+    animation: none;
   }
 }

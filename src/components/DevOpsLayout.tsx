@@ -1,10 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Terminal } from "@/components/terminal/Terminal";
+import dynamic from "next/dynamic";
 import { PipelineNav } from "@/components/pipeline/PipelineNav";
 import { MatrixRain } from "@/components/effects/MatrixRain";
 import { BootSequence } from "@/components/effects/BootSequence";
+
+const Terminal = dynamic(
+    () => import("@/components/terminal/Terminal").then((mod) => mod.Terminal),
+    { ssr: false }
+);
 
 export function DevOpsLayout({ children }: { children: React.ReactNode }) {
     const [terminalOpen, setTerminalOpen] = useState(false);
