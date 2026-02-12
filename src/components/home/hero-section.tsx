@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, Facebook } from "lucide-react";
 
 const socialLinks = [
   {
@@ -12,8 +12,13 @@ const socialLinks = [
   },
   {
     name: "LinkedIn",
-    url: "https://linkedin.com/in/yourusername",
+    url: "https://www.linkedin.com/in/angelo-john-calleja-81312a319/",
     icon: <Linkedin className="w-6 h-6" />,
+  },
+  {
+    name: "Facebook",
+    url: "https://www.facebook.com/0987kill/",
+    icon: <Facebook className="w-6 h-6" />,
   },
   {
     name: "Email",
@@ -29,7 +34,7 @@ export function HeroSection() {
     >
       <div className="absolute inset-0 bg-grid-pattern opacity-5" />
       <div className="container relative flex flex-col md:flex-row gap-12 items-center justify-center px-4 md:px-8 lg:px-24">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
@@ -63,7 +68,7 @@ export function HeroSection() {
               Angelo John S. Calleja
             </h1>
             <div className="space-y-4">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
@@ -76,18 +81,18 @@ export function HeroSection() {
                   <span className="text-muted-foreground">Legazpi City, Philippines</span>
                 </div>
               </motion.div>
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
                 className="text-xl text-muted-foreground/90 leading-relaxed max-w-xl"
               >
-                Passionate about creating <span className="text-primary font-medium">scalable</span> and <span className="text-primary font-medium">high-performance</span> web applications. 
+                Passionate about creating <span className="text-primary font-medium">scalable</span> and <span className="text-primary font-medium">high-performance</span> web applications.
                 Specializing in <span className="text-primary font-medium">Angular</span> frontends and <span className="text-primary font-medium">Laravel</span> backend systems.
               </motion.p>
             </div>
           </motion.div>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}

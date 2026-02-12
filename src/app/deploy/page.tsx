@@ -144,7 +144,7 @@ export default function ExperiencePage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground mb-4">{exp.description}</p>
-                  
+
                   <div className="space-y-2 mb-4">
                     <p className="text-sm font-semibold text-primary">Key Achievements:</p>
                     <ul className="space-y-1">
@@ -272,9 +272,11 @@ export default function ExperiencePage() {
               Get a detailed overview of my experience and qualifications
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
-              <Button size="lg" className="gap-2">
-                <Download className="w-4 h-4" />
-                Download CV
+              <Button size="lg" className="gap-2" asChild>
+                <Link href="https://www.canva.com/design/DAG-x0bdYeI/o7rsbGjAWtIRcf3VlrNmAQ/edit?utm_content=DAG-x0bdYeI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">
+                  <Download className="w-4 h-4" />
+                  Download CV
+                </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
                 <Link href="/projects" className="gap-2">

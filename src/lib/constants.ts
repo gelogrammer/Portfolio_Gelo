@@ -19,8 +19,9 @@ export const IMAGES = {
 } as const;
 
 export const SOCIAL_LINKS = {
-  GITHUB: 'https://github.com/yourusername',
-  LINKEDIN: 'https://linkedin.com/in/yourusername',
+  GITHUB: 'https://github.com/gelogrammer',
+  LINKEDIN: 'https://www.linkedin.com/in/angelo-john-calleja-81312a319/',
+  FACEBOOK: 'https://www.facebook.com/0987kill/',
   TWITTER: 'https://twitter.com/yourusername',
 } as const;
 

@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
-import { Mail, Github, Linkedin, MapPin, Send, Terminal, Clock, Download, ExternalLink, Phone, MessageSquare } from "lucide-react";
+import { Mail, Github, Linkedin, MapPin, Send, Terminal, Clock, Download, ExternalLink, Phone, MessageSquare, Facebook } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -42,17 +42,27 @@ const contactMethods = [
   {
     icon: Linkedin,
     title: "LinkedIn",
-    value: "Angelo Calleja",
-    href: "https://linkedin.com/in/yourusername",
+    value: "Angelo John Calleja",
+    href: "https://www.linkedin.com/in/angelo-john-calleja-81312a319/",
     description: "Connect professionally",
     color: "text-neon-yellow",
     bgColor: "bg-neon-yellow/10",
     borderColor: "border-neon-yellow/20"
+  },
+  {
+    icon: Facebook,
+    title: "Facebook",
+    value: "Angelo John Calleja",
+    href: "https://www.facebook.com/0987kill/",
+    description: "Connect socially",
+    color: "text-blue-500",
+    bgColor: "bg-blue-500/10",
+    borderColor: "border-blue-500/20"
   }
 ];
 
 const quickLinks = [
-  { label: "Download Resume", icon: Download, href: "#", command: "wget ~/resume.pdf" },
+  { label: "Download Resume", icon: Download, href: "https://www.canva.com/design/DAG-x0bdYeI/o7rsbGjAWtIRcf3VlrNmAQ/edit?utm_content=DAG-x0bdYeI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton", command: "wget ~/resume.pdf" },
   { label: "View Projects", icon: ExternalLink, href: "/projects", command: "cd ~/projects" },
   { label: "Read About Me", icon: Terminal, href: "/about", command: "cat ~/about.txt" },
 ];
@@ -68,8 +78,9 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const mailtoLink = `mailto:angelojohn0987@gmail.com?subject=Contact from ${formData.name}&body=${formData.message}%0D%0A%0D%0AFrom: ${formData.email}`;
-    window.location.href = mailtoLink;
+    const subject = encodeURIComponent(`Contact from ${formData.name}`);
+    const body = encodeURIComponent(`${formData.message}\n\nFrom: ${formData.email}`);
+    window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=angelojohn0987@gmail.com&su=${subject}&body=${body}`, '_blank');
   };
 
   return (
@@ -147,7 +158,7 @@ export default function ContactPage() {
                       type="text"
                       id="name"
                       value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="w-full px-4 py-3 rounded-lg border border-primary/20 bg-background/50 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-mono"
                       required
                       placeholder="Your name"
@@ -162,7 +173,7 @@ export default function ContactPage() {
                       type="email"
                       id="email"
                       value={formData.email}
-                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full px-4 py-3 rounded-lg border border-primary/20 bg-background/50 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-mono"
                       required
                       placeholder="your.email@example.com"
@@ -176,7 +187,7 @@ export default function ContactPage() {
                     <textarea
                       id="message"
                       value={formData.message}
-                      onChange={(e) => setFormData({...formData, message: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       rows={6}
                       className="w-full px-4 py-3 rounded-lg border border-primary/20 bg-background/50 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none font-mono"
                       required
@@ -267,8 +278,7 @@ export default function ContactPage() {
                     <div>
                       <h4 className="font-semibold mb-1">Location</h4>
                       <p className="text-sm text-muted-foreground mb-2">
-                        Zone V Libon, Albay<br />
-                        Philippines
+                        Taguig, Philippines
                       </p>
                       <Badge variant="outline" className="text-xs">
                         Remote Available
@@ -323,7 +333,7 @@ export default function ContactPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.1 + index * 0.1 }}
               >
-                <Link href={link.href}>
+                <Link href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
                   <Card className="border-primary/20 bg-primary/5 hover:bg-primary/10 hover:border-primary/40 transition-all duration-300 cursor-pointer group">
                     <CardContent className="p-4">
                       <div className="flex items-center gap-3 mb-2">
@@ -349,7 +359,7 @@ export default function ContactPage() {
           className="mt-12 text-center"
         >
           <p className="text-sm text-muted-foreground font-mono">
-            <span className="text-primary">$</span> Looking forward to hearing from you! 
+            <span className="text-primary">$</span> Looking forward to hearing from you!
             <span className="text-primary animate-pulse">_</span>
           </p>
         </motion.div>

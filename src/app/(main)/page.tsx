@@ -67,7 +67,7 @@ export default function Home() {
                 </div>
                 <div className="flex gap-2">
                   <span className="text-neon-yellow">●</span>
-                  <span className="text-foreground">Location: Zone V Libon, Albay</span>
+                  <span className="text-foreground">Location: Taguig, Philippines</span>
                 </div>
               </motion.div>
 
@@ -78,25 +78,25 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
               >
-                  <Link href="/projects">
-                    <Button className="neon-border bg-primary/10 hover:bg-primary/20 text-primary font-mono">
-                      <Code className="w-4 h-4 mr-2" />
-                      ./view-projects.sh
-                    </Button>
-                  </Link>
-                  <Link href="/about">
-                    <Button variant="outline" className="border-neon-cyan text-neon-cyan hover:bg-neon-cyan/10 font-mono">
-                      <Server className="w-4 h-4 mr-2" />
-                      cat about.txt
-                    </Button>
-                  </Link>
-                  <Link href="/monitor">
-                    <Button variant="outline" className="border-muted-foreground hover:border-primary font-mono">
-                      <Terminal className="w-4 h-4 mr-2" />
-                      ssh contact
-                    </Button>
-                  </Link>
-                </motion.div>
+                <Link href="/projects">
+                  <Button className="neon-border bg-primary/10 hover:bg-primary/20 text-primary font-mono">
+                    <Code className="w-4 h-4 mr-2" />
+                    ./view-projects.sh
+                  </Button>
+                </Link>
+                <Link href="/about">
+                  <Button variant="outline" className="border-neon-cyan text-neon-cyan hover:bg-neon-cyan/10 font-mono">
+                    <Server className="w-4 h-4 mr-2" />
+                    cat about.txt
+                  </Button>
+                </Link>
+                <Link href="/monitor">
+                  <Button variant="outline" className="border-muted-foreground hover:border-primary font-mono">
+                    <Terminal className="w-4 h-4 mr-2" />
+                    ssh contact
+                  </Button>
+                </Link>
+              </motion.div>
             </div>
           </div>
         </motion.section>
