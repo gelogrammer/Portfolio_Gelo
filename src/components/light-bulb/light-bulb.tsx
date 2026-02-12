@@ -7,12 +7,10 @@ import { useTheme } from "next-themes";
 export function LightBulb() {
   const { theme, setTheme } = useTheme();
   const [isOn, setIsOn] = useState(theme === "light");
-  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    setAudio(new Audio("https://www.fesliyanstudios.com/play-mp3/387"));
   }, []);
 
   useEffect(() => {
@@ -25,7 +23,6 @@ export function LightBulb() {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
     setIsOn(newTheme === "light");
-    audio?.play();
   };
 
   if (!mounted) return null;

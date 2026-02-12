@@ -495,7 +495,7 @@ export default function AboutPage() {
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href="https://www.canva.com/design/DAG-x0bdYeI/o7rsbGjAWtIRcf3VlrNmAQ/edit?utm_content=DAG-x0bdYeI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" className="gap-2">
+                <Link href="https://www.canva.com/design/DAG-x0bdYeI/o7rsbGjAWtIRcf3VlrNmAQ/view" target="_blank" rel="noopener noreferrer" className="gap-2">
                   <Download className="w-4 h-4" />
                   Download CV
                 </Link>

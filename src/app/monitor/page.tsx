@@ -62,7 +62,7 @@ const contactMethods = [
 ];
 
 const quickLinks = [
-  { label: "Download Resume", icon: Download, href: "https://www.canva.com/design/DAG-x0bdYeI/o7rsbGjAWtIRcf3VlrNmAQ/edit?utm_content=DAG-x0bdYeI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton", command: "wget ~/resume.pdf" },
+  { label: "Download Resume", icon: Download, href: "https://www.canva.com/design/DAG-x0bdYeI/o7rsbGjAWtIRcf3VlrNmAQ/view", command: "wget ~/resume.pdf" },
   { label: "View Projects", icon: ExternalLink, href: "/projects", command: "cd ~/projects" },
   { label: "Read About Me", icon: Terminal, href: "/about", command: "cat ~/about.txt" },
 ];

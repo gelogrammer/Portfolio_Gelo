@@ -393,7 +393,7 @@ export default function Projects() {
                     >
                       {project.demoLink !== "#" ? (
                         <Button asChild size="sm" className="flex-1">
-                          <Link href={project.demoLink} target="_blank">
+                          <Link href={project.demoLink} target="_blank" rel="noopener noreferrer">
                             <ExternalLink className="w-4 h-4 mr-2" />
                             Live Demo
                           </Link>
@@ -453,7 +453,7 @@ export default function Projects() {
                                   ))}
                                 </div>
                                 <Button asChild className="w-full">
-                                  <Link href={project.githubLink} target="_blank">
+                                  <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
                                     <Github className="w-4 h-4 mr-2" />
                                     View Source Code
                                   </Link>

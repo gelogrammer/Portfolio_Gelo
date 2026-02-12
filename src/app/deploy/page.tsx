@@ -273,7 +273,7 @@ export default function ExperiencePage() {
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
               <Button size="lg" className="gap-2" asChild>
-                <Link href="https://www.canva.com/design/DAG-x0bdYeI/o7rsbGjAWtIRcf3VlrNmAQ/edit?utm_content=DAG-x0bdYeI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">
+                <Link href="https://www.canva.com/design/DAG-x0bdYeI/o7rsbGjAWtIRcf3VlrNmAQ/view" target="_blank" rel="noopener noreferrer">
                   <Download className="w-4 h-4" />
                   Download CV
                 </Link>

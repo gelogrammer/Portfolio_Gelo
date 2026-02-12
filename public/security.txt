@@ -1,0 +1,7 @@
+Contact: mailto:angelojohn0987@gmail.com
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://devopsgelo.portfolio-gelo-9ti.pages.dev/.well-known/security.txt
+
+# This is a professional portfolio website.
+# If you discover any security issues, please contact me directly.
