@@ -1,0 +1,13 @@
+{
+	"terminal.integrated.profiles.windows": {
+		"PowerShell Bypass": {
+			"source": "PowerShell",
+			"args": ["-NoLogo", "-NoProfile", "-ExecutionPolicy", "Bypass"]
+		}
+	},
+	"terminal.integrated.defaultProfile.windows": "PowerShell Bypass",
+	"terminal.integrated.automationProfile.windows": {
+		"source": "PowerShell",
+		"args": ["-NoLogo", "-NoProfile", "-ExecutionPolicy", "Bypass"]
+	}
+}
