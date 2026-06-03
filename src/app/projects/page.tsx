@@ -223,6 +223,28 @@ const projects: Project[] = [
     status: "Production"
   },
   {
+    title: "LinguaTech - Multilingual Restaurant Ordering",
+    description: "A voice-first dining platform for Filipino restaurants that eliminates language barriers. Customers can speak, point, or tap to order authentic Filipino dishes in any of 10 supported languages, with on-demand menu translation and a smart cart powered by real-time speech recognition.",
+    tech: ["React", "TypeScript", "Vite", "Web Speech API", "AI Translation", "TailwindCSS"],
+    category: "Full Stack",
+    image: "/assets/images/projects/linguatech.png",
+    demoLink: "https://linguatech-nine.vercel.app/",
+    githubLink: "#",
+    featured: true,
+    year: "2025",
+    status: "Production",
+    details: {
+      problem: "Foreign diners at Filipino restaurants struggle to read and order from menus written in unfamiliar languages, creating friction and miscommunication at the counter.",
+      solution: "Built a voice-first ordering interface that translates menus on demand and converts spoken orders into cart items in real time, with no account creation required.",
+      features: [
+        "Voice-first ordering with speech-to-cart conversion",
+        "On-demand menu translation across 10 languages",
+        "Smart cart using real-time keyword detection",
+        "Speak, point, or tap accessibility options"
+      ]
+    }
+  },
+  {
     title: "Pixel Pulse Portfolio - Michael Angelo Lasundin",
     description: "A modern, responsive photography portfolio website showcasing professional photography services in Polangui, Albay (Weddings, Portraits, Events). Built with React and Vite for optimal performance.",
     tech: ["React", "TypeScript", "Vite", "Tailwind CSS", "shadcn/ui", "Lucide React"],
