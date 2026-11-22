@@ -1,12 +1,13 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { motion, MotionConfig, useReducedMotion } from "framer-motion";
+import { motion, MotionConfig } from "framer-motion";
 import {
   Cloud,
   GitBranch,
+  CheckCircle2,
+  CircleDot,
   Server,
   Globe,
   Sparkles,
@@ -83,6 +84,42 @@ const skillGroups = [
   { icon: Sparkles, title: "AI & Collaboration", items: ["Generative AI (Claude & other LLMs)", "Jira"] },
 ];
 
+// Career stages, oldest first (pipelines read left to right). Dates from the resume.
+const journey = [
+  {
+    stage: "Education",
+    title: "BS Computer Science",
+    org: "Bicol University",
+    period: "2022 – 2025",
+    duration: "3y",
+    description: "Computer Science degree, College of Science.",
+  },
+  {
+    stage: "Full-Stack",
+    title: "Part-Time Full-Stack Developer",
+    org: "Quanby Solutions Inc.",
+    period: "Jul 2023 – May 2025",
+    duration: "1y 11m",
+    description: "Started as an OJT trainee, promoted to intern, then hired part-time. Built a Business Permit Management System.",
+  },
+  {
+    stage: "Freelance",
+    title: "Freelance Developer",
+    org: "Camp Simeon Ola",
+    period: "Feb – Jun 2025",
+    duration: "5mo",
+    description: "Fidelity bond monitoring, SMS alerts, and a role-based communication system.",
+  },
+  {
+    stage: "DevOps",
+    title: "DevOps Engineer",
+    org: "Accenture",
+    period: "Jul 2025 – Present",
+    duration: "Present",
+    description: "CI/CD pipelines and infrastructure, VM migrations, AWS ECS inventory, and ISD tracking.",
+  },
+];
+
 // Below-the-fold sections animate when scrolled into view instead of on a timer.
 const reveal = {
   initial: { opacity: 0, y: 20 },
@@ -119,7 +156,6 @@ const socialLinks = [
 ];
 
 export default function AboutPage() {
-  const reduceMotion = useReducedMotion();
 
   return (
     <MotionConfig reducedMotion="user">
@@ -341,103 +377,70 @@ export default function AboutPage() {
           </div>
         </motion.div>
 
-        {/* Timeline / Journey */}
-        <motion.div {...reveal} className="mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
-            <span className="text-foreground">
-              My Journey
-            </span>
+        {/* Journey, drawn like a CI/CD pipeline graph: stages flow left to right in time order */}
+        <motion.section {...reveal} className="mb-16" aria-labelledby="journey-heading">
+          <h2 id="journey-heading" className="text-2xl md:text-3xl font-bold mb-8 text-center">
+            My Journey
           </h2>
 
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-primary/20" />
-
-            <div className="space-y-8">
-              {[
-                {
-                  year: "Jul 2025 – Present",
-                  title: "DevOps Engineer @ Accenture",
-                  description: "Managing CI/CD pipelines and infrastructure, migrating VMs, and building internal tools like an AWS ECS inventory and ISD tracker",
-                  icon: Rocket,
-                  color: "text-primary"
-                },
-                {
-                  year: "Feb – Jun 2025",
-                  title: "Freelance Developer",
-                  description: "Built mission-critical systems for Camp Simeon Ola including communication and monitoring platforms",
-                  icon: Code,
-                  color: "text-primary"
-                },
-                {
-                  year: "2023-2025",
-                  title: "Full Stack Developer @ Quanby",
-                  description: "Promoted from OJT to part-time developer, built government systems with Angular 17",
-                  icon: Briefcase,
-                  color: "text-primary"
-                },
-                {
-                  year: "2022-2025",
-                  title: "BS Computer Science",
-                  description: "Graduated from Bicol University - College of Science",
-                  icon: Award,
-                  color: "text-primary"
-                }
-              ].map((item, index) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.4 }}
-                  className={`relative flex items-center gap-4 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-                >
-                  {/* Timeline node */}
-                  <div className="absolute left-4 md:left-1/2 w-3 h-3 -ml-[5px] bg-primary rounded-full border-2 border-background z-10">
-                    {/* Only the current role pulses, so the motion marks "now" */}
-                    {index === 0 && !reduceMotion && (
-                      <motion.div
-                        className="absolute inset-0 rounded-full bg-primary"
-                        animate={{
-                          scale: [1, 1.8, 1],
-                          opacity: [0.6, 0, 0.6],
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                        }}
-                      />
-                    )}
-                  </div>
-
-                  {/* Content */}
-                  <div className={`flex-1 ml-12 md:ml-0 ${index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8'}`}>
-                    <Card className="border-border bg-card hover:border-primary/30 transition-all duration-500 group">
-                      <CardContent className="p-5">
-                        <div className={`flex items-start gap-3 ${index % 2 === 0 ? 'md:flex-row-reverse md:text-right' : ''}`}>
-                          <div className={`p-2 bg-primary/10 rounded-lg ${item.color} group-hover:scale-110 transition-transform`}>
-                            <item.icon className="w-5 h-5" />
-                          </div>
-                          <div className="flex-1">
-                            <Badge variant="outline" className="mb-2 font-mono text-xs">
-                              {item.year}
-                            </Badge>
-                            <h3 className="font-semibold mb-1 group-hover:text-primary transition-colors">
-                              {item.title}
-                            </h3>
-                            <p className="text-sm text-muted-foreground">
-                              {item.description}
-                            </p>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </motion.div>
-              ))}
+          <div className="terminal-box overflow-hidden">
+            {/* Workflow header */}
+            <div className="flex items-center justify-between gap-4 px-5 py-3 border-b border-border bg-secondary/40">
+              <div className="flex items-center gap-2 font-mono text-sm">
+                <GitBranch className="w-4 h-4 text-primary" aria-hidden="true" />
+                <span className="text-foreground">career</span>
+                <span className="text-muted-foreground">·</span>
+                <span className="text-muted-foreground">main</span>
+              </div>
+              <span className="font-mono text-xs text-muted-foreground">{journey.length} stages</span>
             </div>
+
+            {/* Pipeline graph */}
+            <ol className="p-5 md:p-6 flex flex-col lg:flex-row lg:items-stretch">
+              {journey.map((stage, index) => {
+                const current = index === journey.length - 1;
+                return (
+                  <li key={stage.title} className="flex flex-col lg:flex-row lg:flex-1 min-w-0">
+                    <div
+                      className={`flex-1 min-w-0 rounded-lg border bg-background/40 p-4 transition-colors duration-200 ${
+                        current ? "border-primary/60" : "border-border hover:border-primary/30"
+                      }`}
+                    >
+                      <div className="flex items-center justify-between gap-2 mb-3">
+                        <span className="inline-flex items-center gap-2 text-xs font-medium text-muted-foreground uppercase tracking-wide">
+                          {current ? (
+                            <CircleDot className="w-4 h-4 text-primary" aria-hidden="true" />
+                          ) : (
+                            <CheckCircle2 className="w-4 h-4 text-primary" aria-hidden="true" />
+                          )}
+                          {stage.stage}
+                        </span>
+                        <span
+                          className={`shrink-0 px-2 py-0.5 rounded font-mono text-[11px] ${
+                            current ? "bg-primary/15 text-primary" : "bg-secondary text-muted-foreground"
+                          }`}
+                        >
+                          {stage.duration}
+                        </span>
+                      </div>
+                      <h3 className="font-semibold leading-snug">{stage.title}</h3>
+                      <p className="text-sm text-muted-foreground">{stage.org}</p>
+                      <p className="mt-1 font-mono text-xs text-muted-foreground">{stage.period}</p>
+                      <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{stage.description}</p>
+                    </div>
+
+                    {/* Connector to the next stage: vertical on mobile, horizontal on desktop */}
+                    {!current && (
+                      <div className="flex items-center justify-start lg:justify-center pl-6 lg:pl-0 h-6 lg:h-auto lg:w-8 shrink-0" aria-hidden="true">
+                        <span className="block w-px h-full lg:w-full lg:h-px bg-border" />
+                      </div>
+                    )}
+                  </li>
+                );
+              })}
+            </ol>
           </div>
-        </motion.div>
+        </motion.section>
 
         {/* Social Links & CTA */}
         <motion.div {...reveal} className="text-center">
