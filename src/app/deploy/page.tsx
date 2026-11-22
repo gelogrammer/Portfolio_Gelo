@@ -16,13 +16,13 @@ const experiences = [
     type: "Full-Time",
     description: "Managing CI/CD deployment pipelines and system infrastructure supporting production enterprise applications, with a focus on uptime, migrations, and automation.",
     achievements: [
-      "Migrated development and client virtual machines (VMs) with minimal downtime to users and client operations",
-      "Built an AWS ECS services inventory to track containerized services running across environments",
-      "Built an ISD tracker tool to log and monitor Infrastructure Service Delivery issues through to resolution",
-      "Manage CI/CD deployment pipelines and system infrastructure supporting production enterprise applications",
-      "Resolve production and ISD issues to keep uptime high across environments",
-      "Automate repetitive workflows with scripting, reducing manual effort for the team",
-      "Collaborate with cross-functional teams to keep deployments and data flowing smoothly between environments"
+"Migrated development and client virtual machines (VMs) with minimal downtime to users and client operations",
+"Built an AWS ECS services inventory to track containerized services running across environments",
+"Built an ISD tracker tool to log and monitor Infrastructure Service Delivery issues through to resolution",
+"Manage CI/CD deployment pipelines and system infrastructure supporting production enterprise applications",
+"Resolve production and ISD issues to keep uptime high across environments",
+"Automate repetitive workflows with scripting, reducing manual effort for the team",
+"Collaborate with cross-functional teams to keep deployments and data flowing smoothly between environments"
     ],
     technologies: ["AWS", "Azure", "CI/CD", "Docker", "Terraform", "Python", "Bash", "PowerShell"]
   },
@@ -34,9 +34,9 @@ const experiences = [
     type: "Freelance",
     description: "Developed multiple enterprise web and mobile applications for government and military clients, focusing on real-time tracking, communication systems, and SMS alerts.",
     achievements: [
-      "Built a Fidelity Bond Monitoring System (Angular 17, Supabase) for tracking and managing fidelity bonds with real-time updates and user management",
-      "Developed a Fidelity Bond SMS Alert mobile app (Kotlin, Supabase) that notifies users of bond deadlines and updates",
-      "Created CMAS, a role-based communication system (Angular 17, Supabase) for internal messaging, approvals, and audit tracking within RFU-5"
+"Built a Fidelity Bond Monitoring System (Angular 17, Supabase) for tracking and managing fidelity bonds with real-time updates and user management",
+"Developed a Fidelity Bond SMS Alert mobile app (Kotlin, Supabase) that notifies users of bond deadlines and updates",
+"Created CMAS, a role-based communication system (Angular 17, Supabase) for internal messaging, approvals, and audit tracking within RFU-5"
     ],
     technologies: ["Angular 17", "Supabase", "Kotlin", "Real-time Systems", "Mobile Development"]
   },
@@ -48,10 +48,10 @@ const experiences = [
     type: "Part-Time",
     description: "Started as OJT trainee, promoted to intern, and hired part-time based on performance. Specialized in UI/UX design and full-stack development for government and educational systems.",
     achievements: [
-      "Developed a Business Permit Management System using Angular 17 and Supabase, digitizing permit applications, processing, and compliance tracking",
-      "Reduced manual paperwork through end-to-end digitization of the permit workflow",
-      "Designed UI/UX for the GSIS Learning Management System (LMS) and the VSU Queuing System, focusing on intuitive, user-friendly navigation",
-      "Started as an OJT trainee, promoted to intern, and later hired part-time based on performance"
+"Developed a Business Permit Management System using Angular 17 and Supabase, digitizing permit applications, processing, and compliance tracking",
+"Reduced manual paperwork through end-to-end digitization of the permit workflow",
+"Designed UI/UX for the GSIS Learning Management System (LMS) and the VSU Queuing System, focusing on intuitive, user-friendly navigation",
+"Started as an OJT trainee, promoted to intern, and later hired part-time based on performance"
     ],
     technologies: ["Angular 17", "Supabase", "UI/UX Design", "TypeScript", "Business Process Automation"]
   }
@@ -90,11 +90,11 @@ export default function ExperiencePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-sm font-medium text-primary/80 tracking-wider uppercase mb-2 inline-block"
+            className="text-sm font-mono text-primary mb-2 inline-block"
           >
             My Journey
           </motion.span>
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary/50 bg-clip-text text-transparent mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Work Experience
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -116,7 +116,7 @@ export default function ExperiencePage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.2 }}
             >
-              <Card className="border-primary/10 hover:border-primary/30 transition-all duration-500 overflow-hidden group">
+              <Card className="border-border hover:border-primary/30 transition-all duration-500 overflow-hidden group">
                 <CardHeader className="pb-3">
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-2">
                     <div className="space-y-1">
@@ -191,7 +191,7 @@ export default function ExperiencePage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.6 }}
             >
-              <Card className="border-primary/10 hover:border-primary/30 transition-all duration-500">
+              <Card className="border-border hover:border-primary/30 transition-all duration-500">
                 <CardHeader>
                   <CardTitle className="text-xl">{edu.degree}</CardTitle>
                   <CardDescription className="text-base">{edu.school}</CardDescription>
@@ -230,7 +230,7 @@ export default function ExperiencePage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.7 }}
             >
-              <Card className="border-primary/10 hover:border-primary/30 transition-all duration-500 group">
+              <Card className="border-border hover:border-primary/30 transition-all duration-500 group">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
                     <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:scale-110 transition-transform">

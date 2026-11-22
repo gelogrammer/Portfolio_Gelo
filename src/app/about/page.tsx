@@ -31,24 +31,24 @@ const highlights = [
     title: "DevOps Engineer",
     subtitle: "Accenture",
     description: "Managing CI/CD pipelines and infrastructure for production enterprise apps",
-    color: "text-neon-green",
-    bgColor: "bg-neon-green/10"
+    color: "text-primary",
+    bgColor: "bg-primary/10"
   },
   {
     icon: Code,
     title: "Full Stack Developer",
     subtitle: "Quanby Solutions Inc.",
     description: "Built government and educational systems with Angular 17 & Supabase",
-    color: "text-neon-cyan",
-    bgColor: "bg-neon-cyan/10"
+    color: "text-primary",
+    bgColor: "bg-primary/10"
   },
   {
     icon: Rocket,
     title: "Freelance Developer",
     subtitle: "Camp Simeon Ola & Others",
     description: "Built web and mobile apps for government clients and an MBA accreditation portal for PUP",
-    color: "text-neon-magenta",
-    bgColor: "bg-neon-magenta/10"
+    color: "text-primary",
+    bgColor: "bg-primary/10"
   }
 ];
 
@@ -139,7 +139,7 @@ export default function AboutPage() {
               transition={{ delay: 0.2 }}
               className="lg:col-span-1"
             >
-              <Card className="border-primary/10 bg-card/50 backdrop-blur-sm overflow-hidden">
+              <Card className="border-border bg-card overflow-hidden">
                 <CardContent className="p-0">
                   <div className="relative aspect-square">
                     <Image
@@ -153,30 +153,10 @@ export default function AboutPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
 
                     {/* Status badge */}
-                    <motion.div
-                      className="absolute top-4 right-4 px-3 py-1 bg-primary/90 backdrop-blur-sm rounded-full border border-primary/20 flex items-center gap-2"
-                      animate={reduceMotion ? undefined : {
-                        boxShadow: [
-                          '0 0 20px rgba(0,255,65,0.3)',
-                          '0 0 30px rgba(0,255,65,0.5)',
-                          '0 0 20px rgba(0,255,65,0.3)',
-                        ],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                      }}
-                    >
-                      <motion.div
-                        className="w-2 h-2 rounded-full bg-white"
-                        animate={reduceMotion ? undefined : { scale: [1, 1.2, 1] }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                        }}
-                      />
-                      <span className="text-xs font-mono font-bold text-background">AVAILABLE</span>
-                    </motion.div>
+                    <div className="absolute top-4 right-4 px-3 py-1 bg-background/90 rounded-full border border-primary/40 flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-primary" aria-hidden="true" />
+                      <span className="text-xs font-mono font-medium text-foreground">available</span>
+                    </div>
                   </div>
 
                   {/* Info panel */}
@@ -201,7 +181,7 @@ export default function AboutPage() {
                       </div>
                     </div>
 
-                    <div className="pt-4 border-t border-primary/10">
+                    <div className="pt-4 border-t border-border">
                       <Button asChild className="w-full gap-2">
                         <Link href="/monitor">
                           <Mail className="w-4 h-4" />
@@ -226,24 +206,24 @@ export default function AboutPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
-                  className="text-sm font-mono text-primary/80 tracking-wider uppercase mb-2 inline-block"
+                  className="text-sm font-mono text-primary mb-2 inline-block"
                 >
                   $ cat ~/about.txt
                 </motion.span>
-                <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary/50 bg-clip-text text-transparent mb-4">
+                <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                   About Me
                 </h1>
               </div>
 
               <div className="space-y-4 text-muted-foreground leading-relaxed max-w-3xl">
                 <p className="text-base md:text-lg">
-                  Hi! I'm a <span className="text-primary font-medium">DevOps Engineer at Accenture</span> and a Computer Science graduate of Bicol University, based in Taguig City, Metro Manila.
+                  Hi! I'm a <span className="text-foreground font-medium">DevOps Engineer at Accenture</span> and a Computer Science graduate of Bicol University, based in Taguig City, Metro Manila.
                 </p>
                 <p className="text-base md:text-lg">
-                  Day to day, I manage <span className="text-primary font-medium">CI/CD pipelines</span> and <span className="text-primary font-medium">infrastructure</span> for production enterprise applications, resolve production and ISD issues, and <span className="text-primary font-medium">automate repetitive work</span> with Python, Bash, and PowerShell. I've migrated development and client VMs with minimal downtime and built internal tools like an <span className="text-primary font-medium">AWS ECS services inventory</span> and an <span className="text-primary font-medium">ISD tracker</span>.
+                  Day to day, I manage <span className="text-foreground font-medium">CI/CD pipelines</span> and <span className="text-foreground font-medium">infrastructure</span> for production enterprise applications, resolve production and ISD issues, and <span className="text-foreground font-medium">automate repetitive work</span> with Python, Bash, and PowerShell. I've migrated development and client VMs with minimal downtime and built internal tools like an <span className="text-foreground font-medium">AWS ECS services inventory</span> and an <span className="text-foreground font-medium">ISD tracker</span>.
                 </p>
                 <p className="text-base md:text-lg">
-                  Before DevOps, I spent nearly two years building <span className="text-primary font-medium">full-stack systems</span> with Angular and Supabase, from a Business Permit Management System at Quanby Solutions to fidelity bond monitoring and communication systems for Camp Simeon Ola. That background helps me understand the applications I deploy, not just the pipelines that ship them.
+                  Before DevOps, I spent nearly two years building <span className="text-foreground font-medium">full-stack systems</span> with Angular and Supabase, from a Business Permit Management System at Quanby Solutions to fidelity bond monitoring and communication systems for Camp Simeon Ola. That background helps me understand the applications I deploy, not just the pipelines that ship them.
                 </p>
               </div>
 
@@ -256,7 +236,7 @@ export default function AboutPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 + index * 0.1 }}
                   >
-                    <Card className={`border ${highlight.bgColor} border-primary/10 hover:border-primary/30 transition-all duration-300 group h-full`}>
+                    <Card className={`border ${highlight.bgColor} border-border hover:border-primary/30 transition-all duration-300 group h-full`}>
                       <CardContent className="p-4">
                         <div className="flex items-start gap-3">
                           <div className={`p-2 ${highlight.bgColor} rounded-lg ${highlight.color} group-hover:scale-110 transition-transform`}>
@@ -280,7 +260,7 @@ export default function AboutPage() {
         {/* What I Value */}
         <motion.div {...reveal} className="mb-16">
           <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
-            <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/50 bg-clip-text text-transparent">
+            <span className="text-foreground">
               What I Value
             </span>
           </h2>
@@ -294,7 +274,7 @@ export default function AboutPage() {
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
               >
-                <Card className="border-primary/10 bg-card/50 hover:border-primary/30 transition-all duration-500 group h-full">
+                <Card className="border-border bg-card hover:border-primary/30 transition-all duration-500 group h-full">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
                       <div className="p-3 bg-primary/10 rounded-lg text-primary group-hover:scale-110 transition-transform">
@@ -319,7 +299,7 @@ export default function AboutPage() {
         {/* Skills & Tools */}
         <motion.div {...reveal} className="mb-16">
           <h2 className="text-2xl md:text-3xl font-bold mb-3 text-center">
-            <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/50 bg-clip-text text-transparent">
+            <span className="text-foreground">
               Skills &amp; Tools
             </span>
           </h2>
@@ -336,7 +316,7 @@ export default function AboutPage() {
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
               >
-                <Card className="border-primary/10 bg-card/50 hover:border-primary/30 transition-colors duration-300 h-full">
+                <Card className="border-border bg-card hover:border-primary/30 transition-colors duration-300 h-full">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="p-2 bg-primary/10 rounded-lg text-primary">
@@ -364,7 +344,7 @@ export default function AboutPage() {
         {/* Timeline / Journey */}
         <motion.div {...reveal} className="mb-16">
           <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
-            <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/50 bg-clip-text text-transparent">
+            <span className="text-foreground">
               My Journey
             </span>
           </h2>
@@ -380,28 +360,28 @@ export default function AboutPage() {
                   title: "DevOps Engineer @ Accenture",
                   description: "Managing CI/CD pipelines and infrastructure, migrating VMs, and building internal tools like an AWS ECS inventory and ISD tracker",
                   icon: Rocket,
-                  color: "text-neon-green"
+                  color: "text-primary"
                 },
                 {
                   year: "Feb – Jun 2025",
                   title: "Freelance Developer",
                   description: "Built mission-critical systems for Camp Simeon Ola including communication and monitoring platforms",
                   icon: Code,
-                  color: "text-neon-cyan"
+                  color: "text-primary"
                 },
                 {
                   year: "2023-2025",
                   title: "Full Stack Developer @ Quanby",
                   description: "Promoted from OJT to part-time developer, built government systems with Angular 17",
                   icon: Briefcase,
-                  color: "text-neon-magenta"
+                  color: "text-primary"
                 },
                 {
                   year: "2022-2025",
                   title: "BS Computer Science",
                   description: "Graduated from Bicol University - College of Science",
                   icon: Award,
-                  color: "text-neon-yellow"
+                  color: "text-primary"
                 }
               ].map((item, index) => (
                 <motion.div
@@ -432,7 +412,7 @@ export default function AboutPage() {
 
                   {/* Content */}
                   <div className={`flex-1 ml-12 md:ml-0 ${index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8'}`}>
-                    <Card className="border-primary/10 bg-card/50 hover:border-primary/30 transition-all duration-500 group">
+                    <Card className="border-border bg-card hover:border-primary/30 transition-all duration-500 group">
                       <CardContent className="p-5">
                         <div className={`flex items-start gap-3 ${index % 2 === 0 ? 'md:flex-row-reverse md:text-right' : ''}`}>
                           <div className={`p-2 bg-primary/10 rounded-lg ${item.color} group-hover:scale-110 transition-transform`}>

@@ -117,10 +117,10 @@ const projects: Project[] = [
       problem: "Transferring Docker images between isolated AWS accounts required manual, error-prone steps and multiple scripts.",
       solution: "Created a unified Bash script that automates the entire process using AWS STS for secure role assumption and temporary credentials.",
       features: [
-        "Automatic Assume Role authentication",
-        "Secure credential handling and cleanup",
-        "Comprehensive logging and error tracking",
-        "Input validation to prevent injection attacks"
+"Automatic Assume Role authentication",
+"Secure credential handling and cleanup",
+"Comprehensive logging and error tracking",
+"Input validation to prevent injection attacks"
       ]
     }
   },
@@ -139,10 +139,10 @@ const projects: Project[] = [
       problem: "Manual Excel processing was time-consuming and inconsistent across the team.",
       solution: "Developed a web-based tool allowing users to upload files, apply saved column filters, and remove duplicates automatically.",
       features: [
-        "Drag-and-drop file upload",
-        "Template management for recurring tasks",
-        "Real-time column searching and filtering",
-        "High-performance Pandas processing backend"
+"Drag-and-drop file upload",
+"Template management for recurring tasks",
+"Real-time column searching and filtering",
+"High-performance Pandas processing backend"
       ]
     }
   },
@@ -161,10 +161,10 @@ const projects: Project[] = [
       problem: "Lack of visibility into pipeline metrics and environment classifications across multiple projects.",
       solution: "Built a Python scraper that interfaces with the Azure DevOps API to collect and aggregate data into actionable Excel reports.",
       features: [
-        "Secure PAT authentication",
-        "Detailed pipeline metric extraction",
-        "Automated Excel report generation",
-        "Environment classification analysis"
+"Secure PAT authentication",
+"Detailed pipeline metric extraction",
+"Automated Excel report generation",
+"Environment classification analysis"
       ]
     }
   },
@@ -183,10 +183,10 @@ const projects: Project[] = [
       problem: "Difficulty in validating CI/CD pipeline stages with a consistent, controllable test artifact.",
       solution: "Developed a lightweight Java application specifically designed to verify deployment, health checks, and API availability in pipelines.",
       features: [
-        "RESTful status endpoints",
-        "Customizable health check logic",
-        "Docker containerization support",
-        "Jenkins pipeline integration examples"
+"RESTful status endpoints",
+"Customizable health check logic",
+"Docker containerization support",
+"Jenkins pipeline integration examples"
       ]
     }
   },
@@ -205,10 +205,10 @@ const projects: Project[] = [
       problem: "Manual deployment of monitored infrastructure was slow and prone to configuration drift.",
       solution: "Implemented an IaC approach using Terraform and PowerShell to provision EC2 instances with Dynatrace OneAgent automatically installed and configured.",
       features: [
-        "Automated EC2 provisioning",
-        "Seamless Dynatrace OneAgent installation",
-        "Secure parameter handling",
-        "PowerShell automation for Windows environments"
+"Automated EC2 provisioning",
+"Seamless Dynatrace OneAgent installation",
+"Secure parameter handling",
+"PowerShell automation for Windows environments"
       ]
     }
   },
@@ -227,10 +227,10 @@ const projects: Project[] = [
       problem: "Routine DevOps tasks like license updates and backups were manual, repetitive, and prone to human error.",
       solution: "Developed a suite of standardized shell scripts with built-in error handling, logging, and recovery mechanisms to automate these critical operations.",
       features: [
-        "gen-update-licenses: Automated license updates across container volumes",
-        "Built-in backup and error recovery mechanisms",
-        "Standardized naming convention (<prefix>-<action>-<scope>.sh)",
-        "Focus on safety, repeatability, and observability"
+"gen-update-licenses: Automated license updates across container volumes",
+"Built-in backup and error recovery mechanisms",
+"Standardized naming convention (<prefix>-<action>-<scope>.sh)",
+"Focus on safety, repeatability, and observability"
       ]
     }
   },
@@ -261,10 +261,10 @@ const projects: Project[] = [
       problem: "Foreign diners at Filipino restaurants struggle to read and order from menus written in unfamiliar languages, creating friction and miscommunication at the counter.",
       solution: "Built a voice-first ordering interface that translates menus on demand and converts spoken orders into cart items in real time, with no account creation required.",
       features: [
-        "Voice-first ordering with speech-to-cart conversion",
-        "On-demand menu translation across 10 languages",
-        "Smart cart using real-time keyword detection",
-        "Speak, point, or tap accessibility options"
+"Voice-first ordering with speech-to-cart conversion",
+"On-demand menu translation across 10 languages",
+"Smart cart using real-time keyword detection",
+"Speak, point, or tap accessibility options"
       ]
     }
   },
@@ -287,7 +287,6 @@ const categories = ["All", "Full Stack", "Backend", "AI & Research", "DevOps", "
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const [hoveredProject, setHoveredProject] = useState<string | null>(null);
 
   const filteredProjects = projects.filter(project => {
     const matchesCategory = selectedCategory === "All" || project.category === selectedCategory;
@@ -316,11 +315,11 @@ export default function Projects() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-sm font-mono text-primary/80 tracking-wider uppercase mb-2 inline-block"
+            className="text-sm font-mono text-primary mb-2 inline-block"
           >
             $ ls -la ~/projects/
           </motion.span>
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary/50 bg-clip-text text-transparent mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Featured Work
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
@@ -361,7 +360,7 @@ export default function Projects() {
                 placeholder="Search projects..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 rounded-lg border border-primary/20 bg-background/50 backdrop-blur-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-mono text-sm"
+                className="w-full pl-10 pr-4 py-2 rounded-lg border border-primary/20 bg-background/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-mono text-sm"
               />
             </div>
 
@@ -395,128 +394,39 @@ export default function Projects() {
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                onMouseEnter={() => setHoveredProject(project.title)}
-                onMouseLeave={() => setHoveredProject(null)}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.35, delay: (index % 2) * 0.05 }}
                 className="group"
               >
-                <Card className="h-full overflow-hidden border border-primary/10 bg-card/50 backdrop-blur-sm hover:border-primary/30 transition-all duration-500 flex flex-col">
+                <Card className="h-full overflow-hidden border border-border bg-card hover:border-primary/40 transition-colors duration-200 flex flex-col">
                   {/* Project Image */}
                   <div className="relative h-56 overflow-hidden bg-black/20 shrink-0">
                     <Image
                       src={project.image}
-                      alt={project.title}
+                      alt={`Screenshot of ${project.title}`}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      sizes="(min-width: 1024px) 600px, 100vw"
+                      className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.03]"
                     />
                     {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" aria-hidden="true" />
 
                     {/* Status Badge */}
                     <Badge
                       variant="outline"
-                      className="absolute top-4 right-4 bg-background/95 backdrop-blur-sm border-primary/20"
+                      className="absolute top-4 right-4 bg-background/95 border-primary/20"
                     >
                       {project.status}
                     </Badge>
 
                     {/* Year Badge */}
-                    <div className="absolute top-4 left-4 flex items-center gap-2 px-2 py-1 bg-background/95 backdrop-blur-sm rounded-md border border-primary/20">
+                    <div className="absolute top-4 left-4 flex items-center gap-2 px-2 py-1 bg-background/95 rounded-md border border-primary/20">
                       <Calendar className="w-3 h-3 text-primary" />
                       <span className="text-xs font-mono text-primary">{project.year}</span>
                     </div>
 
-                    {/* Hover Actions */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{
-                        opacity: hoveredProject === project.title ? 1 : 0,
-                        y: hoveredProject === project.title ? 0 : 20
-                      }}
-                      className="absolute bottom-4 left-4 right-4 flex gap-2"
-                    >
-                      {project.demoLink !== "#" ? (
-                        <Button asChild size="sm" className="flex-1">
-                          <Link href={project.demoLink} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            Live Demo
-                          </Link>
-                        </Button>
-                      ) : (
-                        <Dialog>
-                          <DialogTrigger asChild>
-                            <Button size="sm" className="flex-1 bg-primary/20 hover:bg-primary/30 text-primary border border-primary/50">
-                              <Search className="w-4 h-4 mr-2" />
-                              View Details
-                            </Button>
-                          </DialogTrigger>
-                          <DialogContent className="max-w-2xl bg-background/95 backdrop-blur-xl border-primary/20">
-                            <DialogHeader>
-                              <DialogTitle className="text-2xl font-bold font-mono text-primary flex items-center gap-2">
-                                <Terminal className="w-6 h-6" />
-                                {project.title}
-                              </DialogTitle>
-                              <DialogDescription className="text-lg mt-2">
-                                {project.description}
-                              </DialogDescription>
-                            </DialogHeader>
-
-                            <ScrollArea className="max-h-[60vh] mt-4 pr-4">
-                              {project.details && (
-                                <div className="space-y-6">
-                                  <div className="p-4 rounded-lg bg-primary/5 border border-primary/10">
-                                    <h4 className="text-sm font-mono text-primary mb-2 uppercase tracking-wider">The Problem</h4>
-                                    <p className="text-muted-foreground">{project.details.problem}</p>
-                                  </div>
-
-                                  <div className="p-4 rounded-lg bg-green-500/5 border border-green-500/10">
-                                    <h4 className="text-sm font-mono text-green-500 mb-2 uppercase tracking-wider">The Solution</h4>
-                                    <p className="text-muted-foreground">{project.details.solution}</p>
-                                  </div>
-
-                                  <div>
-                                    <h4 className="text-sm font-mono text-primary mb-3 uppercase tracking-wider">Key Features</h4>
-                                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                      {project.details.features.map((feature, i) => (
-                                        <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                                          <span className="text-primary mt-1">▹</span>
-                                          {feature}
-                                        </li>
-                                      ))}
-                                    </ul>
-                                  </div>
-                                </div>
-                              )}
-
-                              <div className="mt-6 pt-6 border-t border-primary/10">
-                                <div className="flex flex-wrap gap-2 mb-4">
-                                  {project.tech.map((tech) => (
-                                    <Badge key={tech} variant="secondary" className="font-mono text-xs">
-                                      {tech}
-                                    </Badge>
-                                  ))}
-                                </div>
-                                <Button asChild className="w-full">
-                                  <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
-                                    <Github className="w-4 h-4 mr-2" />
-                                    View Source Code
-                                  </Link>
-                                </Button>
-                              </div>
-                            </ScrollArea>
-                          </DialogContent>
-                        </Dialog>
-                      )}
-
-                      <Button asChild size="sm" variant="outline" className="backdrop-blur-sm bg-background/50">
-                        <Link href={project.githubLink}>
-                          <Github className="w-4 h-4 mr-2" />
-                          Code
-                        </Link>
-                      </Button>
-                    </motion.div>
                   </div>
 
                   {/* Project Content */}
@@ -557,6 +467,93 @@ export default function Projects() {
                           </span>
                         )}
                       </div>
+                    </div>
+
+                    {/* Actions: always visible, so they work on touch devices too */}
+                    <div className="flex flex-wrap gap-2 mt-5 pt-4 border-t border-border">
+                      {project.demoLink !== "#" && (
+                        <Button asChild size="sm" className="gap-2">
+                          <Link href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink className="w-4 h-4" aria-hidden="true" />
+                            Live demo
+                          </Link>
+                        </Button>
+                      )}
+                      {project.details && (
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <Button size="sm" variant="outline" className="gap-2">
+                              <Search className="w-4 h-4" aria-hidden="true" />
+                              Details
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent className="max-w-2xl bg-background/95 backdrop-blur-xl border-primary/20">
+                                <DialogHeader>
+                                  <DialogTitle className="text-2xl font-bold font-mono text-primary flex items-center gap-2">
+                                    <Terminal className="w-6 h-6" />
+                                    {project.title}
+                                  </DialogTitle>
+                                  <DialogDescription className="text-lg mt-2">
+                                    {project.description}
+                                  </DialogDescription>
+                                </DialogHeader>
+    
+                                <ScrollArea className="max-h-[60vh] mt-4 pr-4">
+                                  {project.details && (
+                                    <div className="space-y-6">
+                                      <div className="p-4 rounded-lg bg-primary/5 border border-border">
+                                        <h4 className="text-sm font-mono text-primary mb-2 uppercase tracking-wider">The Problem</h4>
+                                        <p className="text-muted-foreground">{project.details.problem}</p>
+                                      </div>
+    
+                                      <div className="p-4 rounded-lg bg-green-500/5 border border-green-500/10">
+                                        <h4 className="text-sm font-mono text-green-500 mb-2 uppercase tracking-wider">The Solution</h4>
+                                        <p className="text-muted-foreground">{project.details.solution}</p>
+                                      </div>
+    
+                                      <div>
+                                        <h4 className="text-sm font-mono text-primary mb-3 uppercase tracking-wider">Key Features</h4>
+                                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                          {project.details.features.map((feature, i) => (
+                                            <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                                              <span className="text-primary mt-1">▹</span>
+                                              {feature}
+                                            </li>
+                                          ))}
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  )}
+    
+                                  <div className="mt-6 pt-6 border-t border-border">
+                                    <div className="flex flex-wrap gap-2 mb-4">
+                                      {project.tech.map((tech) => (
+                                        <Badge key={tech} variant="secondary" className="font-mono text-xs">
+                                          {tech}
+                                        </Badge>
+                                      ))}
+                                    </div>
+                                    {project.githubLink !== "#" && (
+                                      <Button asChild className="w-full">
+                                        <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                                          <Github className="w-4 h-4 mr-2" aria-hidden="true" />
+                                          View Source Code
+                                        </Link>
+                                      </Button>
+                                    )}
+                                  </div>
+                                </ScrollArea>
+                              </DialogContent>
+                        </Dialog>
+                      )}
+                      {project.githubLink !== "#" && (
+                        <Button asChild size="sm" variant="outline" className="gap-2">
+                          <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                            <Github className="w-4 h-4" aria-hidden="true" />
+                            Code
+                          </Link>
+                        </Button>
+                      )}
                     </div>
                   </CardContent>
                 </Card>

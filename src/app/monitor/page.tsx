@@ -15,9 +15,9 @@ const contactMethods = [
     value: "angelojohn0987@gmail.com",
     href: "mailto:angelojohn0987@gmail.com",
     description: "Send me an email",
-    color: "text-neon-green",
-    bgColor: "bg-neon-green/10",
-    borderColor: "border-neon-green/20"
+    color: "text-primary",
+    bgColor: "bg-primary/10",
+    borderColor: "border-border"
   },
   {
     icon: Phone,
@@ -25,9 +25,9 @@ const contactMethods = [
     value: "+63 910 727 1463",
     href: "tel:+639107271463",
     description: "Give me a call",
-    color: "text-neon-cyan",
-    bgColor: "bg-neon-cyan/10",
-    borderColor: "border-neon-cyan/20"
+    color: "text-primary",
+    bgColor: "bg-primary/10",
+    borderColor: "border-border"
   },
   {
     icon: Github,
@@ -35,9 +35,9 @@ const contactMethods = [
     value: "@gelogrammer",
     href: "https://github.com/gelogrammer",
     description: "Check my repositories",
-    color: "text-neon-magenta",
-    bgColor: "bg-neon-magenta/10",
-    borderColor: "border-neon-magenta/20"
+    color: "text-primary",
+    bgColor: "bg-primary/10",
+    borderColor: "border-border"
   },
   {
     icon: Linkedin,
@@ -45,9 +45,9 @@ const contactMethods = [
     value: "Angelo John Calleja",
     href: "https://www.linkedin.com/in/angelo-john-calleja-81312a319/",
     description: "Connect professionally",
-    color: "text-neon-yellow",
-    bgColor: "bg-neon-yellow/10",
-    borderColor: "border-neon-yellow/20"
+    color: "text-primary",
+    bgColor: "bg-primary/10",
+    borderColor: "border-border"
   },
   {
     icon: Facebook,
@@ -55,9 +55,9 @@ const contactMethods = [
     value: "Angelo John Calleja",
     href: "https://www.facebook.com/0987kill/",
     description: "Connect socially",
-    color: "text-blue-500",
-    bgColor: "bg-blue-500/10",
-    borderColor: "border-blue-500/20"
+    color: "text-primary",
+    bgColor: "bg-primary/10",
+    borderColor: "border-border"
   }
 ];
 
@@ -96,15 +96,15 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-sm font-mono text-primary/80 tracking-wider uppercase mb-2 inline-block"
+            className="text-sm font-mono text-primary mb-2 inline-block"
           >
             $ ./connect.sh
           </motion.span>
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary/50 bg-clip-text text-transparent mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Get In Touch
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-6">
-            Have a project in mind? Let's discuss how we can work together to build something amazing
+            Open to DevOps, cloud, and platform engineering roles, and to freelance web projects.
           </p>
 
           {/* Availability Badge */}
@@ -114,17 +114,7 @@ export default function ContactPage() {
             transition={{ delay: 0.3 }}
             className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full"
           >
-            <motion.div
-              className="w-2 h-2 rounded-full bg-primary"
-              animate={{
-                scale: [1, 1.3, 1],
-                opacity: [0.7, 1, 0.7],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-              }}
-            />
+            <span className="w-2 h-2 rounded-full bg-primary" aria-hidden="true" />
             <span className="text-sm font-medium text-primary">Available for Opportunities</span>
           </motion.div>
         </motion.div>
@@ -137,7 +127,7 @@ export default function ContactPage() {
             transition={{ delay: 0.4 }}
             className="lg:col-span-2"
           >
-            <Card className="border-primary/10 bg-card/50 backdrop-blur-sm">
+            <Card className="border-border bg-card ">
               <CardContent className="p-6 md:p-8">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-2 bg-primary/10 rounded-lg">
@@ -151,37 +141,39 @@ export default function ContactPage() {
 
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-2 font-mono text-primary">
+                    <label htmlFor="name" className="block text-sm font-medium mb-2">
                       Name
                     </label>
                     <input
                       type="text"
                       id="name"
+                      autoComplete="name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-primary/20 bg-background/50 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-mono"
+                      className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition-colors"
                       required
                       placeholder="Your name"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2 font-mono text-primary">
+                    <label htmlFor="email" className="block text-sm font-medium mb-2">
                       Email
                     </label>
                     <input
                       type="email"
                       id="email"
+                      autoComplete="email"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-primary/20 bg-background/50 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-mono"
+                      className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition-colors"
                       required
                       placeholder="your.email@example.com"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium mb-2 font-mono text-primary">
+                    <label htmlFor="message" className="block text-sm font-medium mb-2">
                       Message
                     </label>
                     <textarea
@@ -201,18 +193,6 @@ export default function ContactPage() {
                   </Button>
                 </form>
 
-                {/* Terminal Output */}
-                <div className="mt-6 p-4 bg-black/40 rounded-lg border border-primary/10 font-mono text-xs">
-                  <div className="flex items-center gap-2 mb-2 text-primary">
-                    <Terminal className="w-3 h-3" />
-                    <span>Terminal Output:</span>
-                  </div>
-                  <div className="space-y-1 text-muted-foreground">
-                    <div>$ initializing contact form...</div>
-                    <div>$ awaiting user input...</div>
-                    <div className="text-neon-green">✓ ready to send message</div>
-                  </div>
-                </div>
               </CardContent>
             </Card>
           </motion.div>
@@ -240,20 +220,20 @@ export default function ContactPage() {
                     onMouseEnter={() => setHoveredMethod(method.title)}
                     onMouseLeave={() => setHoveredMethod(null)}
                   >
-                    <Link href={method.href} target={method.href.startsWith('http') ? '_blank' : undefined}>
+                    <Link href={method.href} target={method.href.startsWith('http') ? '_blank' : undefined} rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined} className="block rounded-lg">
                       <Card className={`border ${method.borderColor} ${method.bgColor} hover:border-primary/40 transition-all duration-300 cursor-pointer group`}>
                         <CardContent className="p-4">
                           <div className="flex items-center gap-3">
-                            <div className={`p-2 ${method.bgColor} rounded-lg ${method.color} group-hover:scale-110 transition-transform`}>
+                            <div className={`p-2 ${method.bgColor} rounded-lg ${method.color} transition-colors`}>
                               <method.icon className="w-4 h-4" />
                             </div>
                             <div className="flex-1 min-w-0">
                               <p className="text-xs text-muted-foreground mb-0.5">{method.description}</p>
-                              <p className={`text-sm font-medium truncate ${method.color}`}>
+                              <p className="text-sm font-medium text-foreground break-words">
                                 {method.value}
                               </p>
                             </div>
-                            <ExternalLink className="w-3 h-3 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                            <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors" aria-hidden="true" />
                           </div>
                         </CardContent>
                       </Card>
@@ -269,7 +249,7 @@ export default function ContactPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
             >
-              <Card className="border-primary/10 bg-card/50 backdrop-blur-sm">
+              <Card className="border-border bg-card ">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-3">
                     <div className="p-2 bg-primary/10 rounded-lg">
@@ -295,7 +275,7 @@ export default function ContactPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9 }}
             >
-              <Card className="border-primary/10 bg-card/50 backdrop-blur-sm">
+              <Card className="border-border bg-card ">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-3">
                     <div className="p-2 bg-primary/10 rounded-lg">
@@ -360,7 +340,7 @@ export default function ContactPage() {
         >
           <p className="text-sm text-muted-foreground font-mono">
             <span className="text-primary">$</span> Looking forward to hearing from you!
-            <span className="text-primary animate-pulse">_</span>
+            <span className="terminal-cursor" aria-hidden="true" />
           </p>
         </motion.div>
       </div>

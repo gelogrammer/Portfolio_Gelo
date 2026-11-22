@@ -1,207 +1,108 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { 
-  CodeIcon,
-  LayersIcon,
-  TableIcon,
-  GearIcon,
-  FrameIcon
-} from "@radix-ui/react-icons";
-import { useRef } from "react";
+import { Cloud, GitBranch, Server, Globe, Smartphone, Sparkles } from "lucide-react";
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 }
-  }
-};
+const reveal = {
+  initial: { opacity: 0, y: 12 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-60px" },
+  transition: { duration: 0.35, ease: "easeOut" },
+} as const;
 
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 }
-};
-
-const skillCategories = [
+const skillGroups = [
   {
-    title: "Frontend Development",
-    icon: <FrameIcon className="w-6 h-6" />,
-    color: "text-neon-cyan",
-    skills: [
-      { name: 'Angular 17', level: 'Expert' },
-      { name: 'React', level: 'Advanced' },
-      { name: 'Next.js', level: 'Advanced' },
-      { name: 'TypeScript', level: 'Expert' },
-      { name: 'JavaScript', level: 'Expert' },
-      { name: 'HTML/CSS', level: 'Expert' },
-      { name: 'UI/UX Design', level: 'Advanced' },
-      { name: 'Responsive Design', level: 'Expert' }
-    ]
+    icon: Cloud,
+    title: "Cloud & Infrastructure",
+    file: "infra.tf",
+    skills: ["Azure", "AWS", "Terraform", "Docker", "Kubernetes"],
   },
   {
-    title: "Backend & Database",
-    icon: <TableIcon className="w-6 h-6" />,
-    color: "text-neon-magenta",
-    skills: [
-      { name: 'PHP/Laravel', level: 'Expert' },
-      { name: 'Python', level: 'Advanced' },
-      { name: 'Supabase', level: 'Expert' },
-      { name: 'MySQL', level: 'Expert' },
-      { name: 'Firebase', level: 'Advanced' },
-      { name: 'Node.js', level: 'Advanced' },
-      { name: 'REST APIs', level: 'Expert' },
-      { name: 'Real-time Systems', level: 'Advanced' }
-    ]
+    icon: GitBranch,
+    title: "CI/CD & Version Control",
+    file: "pipeline.yml",
+    skills: ["Azure DevOps", "GitHub Actions", "GitLab CI", "Jenkins", "Git"],
   },
   {
-    title: "DevOps & Tools",
-    icon: <GearIcon className="w-6 h-6" />,
-    color: "text-neon-green",
-    skills: [
-      { name: 'Git', level: 'Expert' },
-      { name: 'CI/CD', level: 'Expert' },
-      { name: 'Debugging', level: 'Expert' },
-      { name: 'Networking', level: 'Advanced' },
-      { name: 'Amplitude', level: 'Certified' },
-      { name: 'Docker', level: 'Intermediate' },
-      { name: 'System Infrastructure', level: 'Advanced' },
-      { name: 'Automation', level: 'Expert' }
-    ]
+    icon: Server,
+    title: "Systems & Scripting",
+    file: "scripts/",
+    skills: ["Linux", "Windows Server", "Python", "Bash", "PowerShell", "Networking"],
   },
   {
-    title: "Mobile Development",
-    icon: <LayersIcon className="w-6 h-6" />,
-    color: "text-neon-yellow",
-    skills: [
-      { name: 'Kotlin', level: 'Advanced' },
-      { name: 'Android Development', level: 'Advanced' },
-      { name: 'SMS Integration', level: 'Advanced' },
-      { name: 'Mobile UI/UX', level: 'Advanced' }
-    ]
-  }
+    icon: Globe,
+    title: "Web Development",
+    file: "web/",
+    skills: ["Angular", "TypeScript", "JavaScript", "React", "Next.js", "Supabase", "MySQL"],
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile",
+    file: "android/",
+    skills: ["Kotlin", "Android", "SMS alerts"],
+  },
+  {
+    icon: Sparkles,
+    title: "AI & Collaboration",
+    file: "tools.md",
+    skills: ["Generative AI (Claude & other LLMs)", "Jira"],
+  },
 ];
 
 export default function SkillsPage() {
-  const containerRef = useRef(null);
-
   return (
-    <main className="min-h-screen py-20" ref={containerRef}>
-      <div className="container mx-auto max-w-7xl px-4 md:px-8">
-        {/* Hero Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+    <main className="min-h-screen py-16 md:py-20">
+      <div className="container mx-auto max-w-6xl px-4 md:px-8">
+        <motion.header
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.35 }}
+          className="mb-12"
         >
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-sm font-medium text-primary/80 tracking-wider uppercase mb-2 inline-block"
-          >
-            My Expertise
-          </motion.span>
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary/50 bg-clip-text text-transparent mb-4">
-            Technical Skills
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            A comprehensive overview of technologies and tools I work with daily
+          <p className="font-mono text-sm text-primary mb-2">$ ls ~/toolbox</p>
+          <h1 className="text-3xl md:text-4xl font-bold mb-3">Skills &amp; Tools</h1>
+          <p className="text-lg text-muted-foreground max-w-2xl">
+            The tools I use day to day as a DevOps engineer, plus the full-stack background I build on.
           </p>
-        </motion.div>
+        </motion.header>
 
-        {/* Skills Grid */}
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="space-y-12"
-        >
-          {skillCategories.map((category, categoryIndex) => (
-            <motion.div
-              key={category.title}
-              variants={item}
-              className="space-y-6"
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {skillGroups.map((group, index) => (
+            <motion.section
+              key={group.title}
+              {...reveal}
+              transition={{ ...reveal.transition, delay: index * 0.04 }}
+              className="terminal-box overflow-hidden hover:border-primary/40 transition-colors duration-200"
+              aria-labelledby={`skill-${index}`}
             >
-              <motion.h2 
-                className={`text-2xl font-semibold flex items-center gap-3 ${category.color}`}
-                whileHover={{ x: 10 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <motion.span
-                  animate={{ rotate: [0, 180, 360] }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                >
-                  {category.icon}
-                </motion.span>
-                {category.title}
-              </motion.h2>
-
-              <Card className="overflow-hidden border-primary/10 hover:border-primary/30 transition-all duration-500">
-                <CardContent className="p-8">
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    {category.skills.map((skill, index) => (
-                      <motion.div
-                        key={skill.name}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: categoryIndex * 0.2 + index * 0.05 }}
-                        whileHover={{ 
-                          scale: 1.05, 
-                          y: -5,
-                          transition: { type: "spring", stiffness: 400 }
-                        }}
-                        className="flex flex-col items-center gap-3 p-4 rounded-lg bg-card/50 hover:bg-card transition-all duration-300 group hover:shadow-md"
-                      >
-                        <motion.div 
-                          className="text-primary group-hover:text-primary/80 transition-colors duration-300"
-                          animate={{ 
-                            scale: [1, 1.1, 1],
-                          }}
-                          transition={{ 
-                            duration: 2,
-                            repeat: Infinity,
-                            repeatType: "reverse",
-                            delay: index * 0.2
-                          }}
-                        >
-                          <CodeIcon className="w-8 h-8" />
-                        </motion.div>
-                        <div className="text-center">
-                          <p className="font-medium group-hover:text-primary transition-colors text-sm">
-                            {skill.name}
-                          </p>
-                          <Badge variant="outline" className="mt-2 group-hover:bg-primary/10 transition-colors text-xs">
-                            {skill.level}
-                          </Badge>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+              <div className="flex items-center justify-between px-5 py-3 border-b border-border bg-secondary/40">
+                <div className="flex items-center gap-2">
+                  <group.icon className="w-4 h-4 text-primary" aria-hidden="true" />
+                  <h2 id={`skill-${index}`} className="font-semibold text-sm">{group.title}</h2>
+                </div>
+                <span className="font-mono text-xs text-muted-foreground">{group.file}</span>
+              </div>
+              <ul className="p-5 flex flex-wrap gap-2">
+                {group.skills.map((skill) => (
+                  <li
+                    key={skill}
+                    className="px-2.5 py-1 rounded-md bg-secondary text-sm font-mono text-secondary-foreground border border-border"
+                  >
+                    {skill}
+                  </li>
+                ))}
+              </ul>
+            </motion.section>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Additional Info */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
-          className="mt-16 text-center"
-        >
-          <div className="terminal-box p-8 max-w-3xl mx-auto">
-            <h3 className="text-xl font-semibold mb-4 text-primary">Continuous Learning</h3>
-            <p className="text-muted-foreground leading-relaxed">
-              I'm always expanding my skill set and staying up-to-date with the latest technologies. 
-              Currently exploring <span className="text-primary font-medium">AI/ML integrations</span>, 
-              <span className="text-primary font-medium"> Microservices</span>, and 
-              <span className="text-primary font-medium"> Cloud Native</span> architectures.
-            </p>
-          </div>
+        <motion.div {...reveal} className="mt-12 terminal-box p-6 md:p-8">
+          <h2 className="text-lg font-semibold mb-2">Currently learning</h2>
+          <p className="text-muted-foreground leading-relaxed">
+            Currently exploring <span className="text-foreground font-medium">AI/ML integrations</span>,{" "}
+            <span className="text-foreground font-medium">microservices</span>, and{" "}
+            <span className="text-foreground font-medium">cloud-native</span> architectures.
+          </p>
         </motion.div>
       </div>
     </main>

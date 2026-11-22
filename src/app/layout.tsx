@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import { Providers } from "@/components/providers";
 import { DevOpsLayout } from "@/components/DevOpsLayout";
 import { Metadata } from "next";
@@ -7,12 +7,23 @@ import "./globals.css";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
 });
 
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
+const siteDescription =
+  "Angelo John S. Calleja — DevOps Engineer at Accenture. CI/CD pipelines, cloud infrastructure (AWS, Azure), automation, and full-stack development.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://devopsgelo.portfolio-gelo-9ti.pages.dev"),
   title: "Angelo John S. Calleja - DevOps Portfolio",
-  description: "Full Stack Developer & DevOps Engineer Portfolio showcasing professional work in Angular, TypeScript, Python, and cloud infrastructure",
-  keywords: ["DevOps", "Full Stack Developer", "Angular", "TypeScript", "Python", "Portfolio", "Software Engineer"],
+  description: siteDescription,
+  keywords: ["DevOps Engineer", "CI/CD", "AWS", "Azure", "Terraform", "Docker", "Kubernetes", "Portfolio"],
   authors: [{ name: "Angelo John S. Calleja" }],
   creator: "Angelo John S. Calleja",
   publisher: "Angelo John S. Calleja",
@@ -29,13 +40,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://devopsgelo.portfolio-gelo-9ti.pages.dev",
     title: "Angelo John S. Calleja - DevOps Portfolio",
-    description: "Full Stack Developer & DevOps Engineer Portfolio showcasing professional work in Angular, TypeScript, Python, and cloud infrastructure",
+    description: siteDescription,
     siteName: "Angelo John S. Calleja Portfolio",
   },
   twitter: {
     card: "summary_large_image",
     title: "Angelo John S. Calleja - DevOps Portfolio",
-    description: "Full Stack Developer & DevOps Engineer Portfolio",
+    description: siteDescription,
   },
 };
 
@@ -46,7 +57,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning className="overflow-x-hidden dark">
-      <body className={`${inter.variable} font-sans antialiased w-full overflow-x-hidden`}>
+      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         <Providers>
           <DevOpsLayout>
             {children}

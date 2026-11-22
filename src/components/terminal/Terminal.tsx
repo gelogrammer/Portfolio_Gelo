@@ -26,7 +26,7 @@ export function Terminal({ isOpen, onToggle }: TerminalProps) {
         help: () => `
 Available commands:
   ls              - List available sections
-  cd <section>    - Navigate to section (home, projects, about, contact)
+  cd <section>    - Navigate (home, projects, about, experience, skills, contact)
   cat <file>      - Display file contents
   grep <keyword>  - Search tech stack
   clear           - Clear terminal
@@ -59,7 +59,9 @@ drwxr-xr-x  2 guest guest 4096 Feb  5 21:00 contact/
                 home: "/",
                 projects: "/projects",
                 about: "/about",
-                contact: "/contact",
+                experience: "/deploy",
+                skills: "/test",
+                contact: "/monitor",
             };
 
             if (!section) {
@@ -77,11 +79,13 @@ drwxr-xr-x  2 guest guest 4096 Feb  5 21:00 contact/
             const file = args[0]?.toLowerCase();
             const files: Record<string, string> = {
                 "readme.md": `# Angelo's Portfolio
-Full Stack Developer specializing in Angular & Laravel
-Building modern, scalable web applications`,
-                "skills.txt": `Frontend: Angular, TypeScript, React, HTML, CSS
-Backend: Laravel, PHP, Node.js, MySQL
-DevOps: Docker, Git, CI/CD`,
+DevOps Engineer @ Accenture
+CI/CD pipelines, cloud infrastructure, and automation
+Try: cat skills.txt`,
+                "skills.txt": `Cloud & Infra:  Azure, AWS, Terraform, Docker, Kubernetes
+CI/CD & VCS:    Azure DevOps, GitHub Actions, GitLab CI, Jenkins, Git
+Systems:        Linux, Windows Server, Python, Bash, PowerShell, Networking
+Web:            Angular, TypeScript, JavaScript, React, Next.js, Supabase, MySQL`,
             };
 
             if (!file) {
@@ -93,8 +97,10 @@ DevOps: Docker, Git, CI/CD`,
         grep: (args) => {
             const keyword = args[0]?.toLowerCase();
             const techStack = [
-                "Angular", "TypeScript", "JavaScript", "HTML", "CSS",
-                "Laravel", "PHP", "MySQL", "Docker", "Git"
+                "Azure", "AWS", "Terraform", "Docker", "Kubernetes",
+                "Azure DevOps", "GitHub Actions", "GitLab CI", "Jenkins", "Git",
+                "Linux", "Windows Server", "Python", "Bash", "PowerShell",
+                "Angular", "TypeScript", "JavaScript", "React", "Next.js", "Supabase", "MySQL"
             ];
 
             if (!keyword) {
@@ -142,27 +148,27 @@ DevOps: Docker, Git, CI/CD`,
         const term = new XTerm({
             cursorBlink: true,
             fontSize: 14,
-            fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
+            fontFamily: "var(--font-mono), 'JetBrains Mono', monospace",
             theme: {
-                background: "#0a0e1a",
-                foreground: "#00ff41",
-                cursor: "#00ff41",
-                black: "#0a0e1a",
-                red: "#f44336",
-                green: "#00ff41",
-                yellow: "#ffff00",
-                blue: "#2196f3",
-                magenta: "#ff00ff",
-                cyan: "#00f0ff",
-                white: "#e0e0e0",
-                brightBlack: "#616161",
-                brightRed: "#ff5252",
-                brightGreen: "#69f0ae",
-                brightYellow: "#ffff8d",
-                brightBlue: "#448aff",
-                brightMagenta: "#ff4081",
-                brightCyan: "#18ffff",
-                brightWhite: "#ffffff",
+                background: "#0e1223",
+                foreground: "#e2e8f0",
+                cursor: "#22c55e",
+                black: "#0e1223",
+                red: "#f87171",
+                green: "#22c55e",
+                yellow: "#fbbf24",
+                blue: "#60a5fa",
+                magenta: "#c4b5fd",
+                cyan: "#38bdf8",
+                white: "#e2e8f0",
+                brightBlack: "#64748b",
+                brightRed: "#fca5a5",
+                brightGreen: "#4ade80",
+                brightYellow: "#fcd34d",
+                brightBlue: "#93c5fd",
+                brightMagenta: "#ddd6fe",
+                brightCyan: "#7dd3fc",
+                brightWhite: "#f8fafc",
             },
         });
 
@@ -175,9 +181,7 @@ DevOps: Docker, Git, CI/CD`,
         fitAddonRef.current = fitAddon;
 
         // Welcome message
-        term.writeln("\x1b[1;32m╔══════════════════════════════════════════════════════════╗\x1b[0m");
-        term.writeln("\x1b[1;32m║\x1b[0m     \x1b[1;36mAngelo's Portfolio Terminal v2.0\x1b[0m                  \x1b[1;32m║\x1b[0m");
-        term.writeln("\x1b[1;32m╚══════════════════════════════════════════════════════════╝\x1b[0m");
+        term.writeln("[1;32mangelo-portfolio[0m terminal");
         term.writeln("");
         term.writeln("Welcome! Type \x1b[1;33mhelp\x1b[0m to see available commands.");
         term.writeln("");
@@ -248,15 +252,15 @@ DevOps: Docker, Git, CI/CD`,
 
     return (
         <div
-            className={`fixed ${isMinimized ? "bottom-4 right-4 w-96" : "bottom-4 right-4 w-[600px] h-[400px]"} 
-        z-50 terminal-box backdrop-blur-sm transition-all duration-300`}
+            className={`fixed ${isMinimized ? "bottom-4 right-4 w-80" : "bottom-4 right-4 left-4 sm:left-auto sm:w-[600px] h-[400px] max-h-[70vh]"}
+        z-50 terminal-box shadow-2xl transition-all duration-300`}
             style={{
                 resize: isMinimized ? "none" : "both",
                 overflow: "hidden",
             }}
         >
             {/* Terminal Header */}
-            <div className="flex items-center justify-between bg-card border-b border-primary/30 px-4 py-2 cursor-move">
+            <div className="flex items-center justify-between bg-secondary/50 border-b border-border px-4 py-2">
                 <div className="flex items-center gap-2">
                     <TerminalIcon className="w-4 h-4 text-primary" />
                     <span className="text-sm font-mono text-primary">Terminal</span>
@@ -264,7 +268,8 @@ DevOps: Docker, Git, CI/CD`,
                 <div className="flex items-center gap-2">
                     <button
                         onClick={() => setIsMinimized(!isMinimized)}
-                        className="p-1 hover:bg-primary/10 rounded transition-colors"
+                        aria-label={isMinimized ? "Expand terminal" : "Minimize terminal"}
+                        className="p-1.5 hover:bg-primary/10 rounded transition-colors"
                     >
                         {isMinimized ? (
                             <Maximize2 className="w-4 h-4 text-primary" />
@@ -274,9 +279,10 @@ DevOps: Docker, Git, CI/CD`,
                     </button>
                     <button
                         onClick={onToggle}
-                        className="p-1 hover:bg-destructive/10 rounded transition-colors"
+                        aria-label="Close terminal"
+                        className="p-1.5 hover:bg-destructive/10 rounded transition-colors"
                     >
-                        <X className="w-4 h-4 text-destructive" />
+                        <X className="w-4 h-4 text-muted-foreground" />
                     </button>
                 </div>
             </div>
