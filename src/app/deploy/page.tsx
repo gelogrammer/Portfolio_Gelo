@@ -14,28 +14,29 @@ const experiences = [
     location: "Philippines",
     period: "July 2025 - Present",
     type: "Full-Time",
-    description: "Managing deployment pipelines and system infrastructure, ensuring high availability for enterprise applications with focus on automation and optimization.",
+    description: "Managing CI/CD deployment pipelines and system infrastructure supporting production enterprise applications, with a focus on uptime, migrations, and automation.",
     achievements: [
-      "Proactively identify and resolve Infrastructure Service Delivery (ISD) issues",
-      "Manage deployment pipelines ensuring high system uptime",
-      "Automate repetitive workflows using scripting and advanced debugging",
-      "Collaborate with cross-functional teams for seamless data flow across environments",
-      "Optimize system performance through logical problem-solving"
+      "Migrated development and client virtual machines (VMs) with minimal downtime to users and client operations",
+      "Built an AWS ECS services inventory to track containerized services running across environments",
+      "Built an ISD tracker tool to log and monitor Infrastructure Service Delivery issues through to resolution",
+      "Manage CI/CD deployment pipelines and system infrastructure supporting production enterprise applications",
+      "Resolve production and ISD issues to keep uptime high across environments",
+      "Automate repetitive workflows with scripting, reducing manual effort for the team",
+      "Collaborate with cross-functional teams to keep deployments and data flowing smoothly between environments"
     ],
-    technologies: ["CI/CD", "Python", "Git", "Debugging", "Networking", "System Infrastructure"]
+    technologies: ["AWS", "Azure", "CI/CD", "Docker", "Terraform", "Python", "Bash", "PowerShell"]
   },
   {
     title: "Freelance Developer",
     company: "Camp Simeon Ola",
-    location: "Legazpi, Albay",
+    location: "Legazpi City, Albay",
     period: "Feb 2025 - June 2025",
     type: "Freelance",
     description: "Developed multiple enterprise web and mobile applications for government and military clients, focusing on real-time tracking, communication systems, and SMS alerts.",
     achievements: [
-      "Built Fidelity Bond Monitoring System with real-time updates and user management",
-      "Developed SMS Alert System using Kotlin for mobile notifications",
-      "Created CMAS – RFU-5 Communication System with role-based messaging and audit tracking",
-      "Implemented Supabase backend for all projects ensuring data integrity"
+      "Built a Fidelity Bond Monitoring System (Angular 17, Supabase) for tracking and managing fidelity bonds with real-time updates and user management",
+      "Developed a Fidelity Bond SMS Alert mobile app (Kotlin, Supabase) that notifies users of bond deadlines and updates",
+      "Created CMAS, a role-based communication system (Angular 17, Supabase) for internal messaging, approvals, and audit tracking within RFU-5"
     ],
     technologies: ["Angular 17", "Supabase", "Kotlin", "Real-time Systems", "Mobile Development"]
   },
@@ -47,11 +48,10 @@ const experiences = [
     type: "Part-Time",
     description: "Started as OJT trainee, promoted to intern, and hired part-time based on performance. Specialized in UI/UX design and full-stack development for government and educational systems.",
     achievements: [
-      "Designed UI/UX for GSIS Learning Management System (LMS) focusing on user-friendly interfaces",
-      "Developed VSU Queuing System with intuitive navigation",
-      "Built Business Permit Management System using Angular 17 and Supabase",
-      "Streamlined permit applications, processing, and compliance tracking",
-      "Improved operational efficiency through digitization, reducing manual paperwork"
+      "Developed a Business Permit Management System using Angular 17 and Supabase, digitizing permit applications, processing, and compliance tracking",
+      "Reduced manual paperwork through end-to-end digitization of the permit workflow",
+      "Designed UI/UX for the GSIS Learning Management System (LMS) and the VSU Queuing System, focusing on intuitive, user-friendly navigation",
+      "Started as an OJT trainee, promoted to intern, and later hired part-time based on performance"
     ],
     technologies: ["Angular 17", "Supabase", "UI/UX Design", "TypeScript", "Business Process Automation"]
   }

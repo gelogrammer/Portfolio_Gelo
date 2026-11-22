@@ -78,7 +78,7 @@ export function HeroSection() {
                   Full Stack Developer
                 </span>
                 <div className="flex items-center gap-1.5 text-sm border border-primary/20 px-3 py-1 rounded-full bg-background/95 shadow-sm hover:border-primary/40 transition-colors">
-                  <span className="text-muted-foreground">Legazpi City, Philippines</span>
+                  <span className="text-muted-foreground">Taguig City, Philippines</span>
                 </div>
               </motion.div>
               <motion.p

@@ -3,8 +3,13 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { motion } from "framer-motion";
+import { motion, MotionConfig, useReducedMotion } from "framer-motion";
 import {
+  Cloud,
+  GitBranch,
+  Server,
+  Globe,
+  Sparkles,
   Mail,
   MapPin,
   Briefcase,
@@ -25,7 +30,7 @@ const highlights = [
     icon: Briefcase,
     title: "DevOps Engineer",
     subtitle: "Accenture",
-    description: "Managing enterprise deployment pipelines and infrastructure",
+    description: "Managing CI/CD pipelines and infrastructure for production enterprise apps",
     color: "text-neon-green",
     bgColor: "bg-neon-green/10"
   },
@@ -40,8 +45,8 @@ const highlights = [
   {
     icon: Rocket,
     title: "Freelance Developer",
-    subtitle: "Various Clients",
-    description: "Created enterprise web and mobile applications for government clients",
+    subtitle: "Camp Simeon Ola & Others",
+    description: "Built web and mobile apps for government clients and an MBA accreditation portal for PUP",
     color: "text-neon-magenta",
     bgColor: "bg-neon-magenta/10"
   }
@@ -51,35 +56,40 @@ const values = [
   {
     icon: Target,
     title: "Problem Solver",
-    description: "Expert in JavaScript and logic-based troubleshooting, translating complex business requirements into technical solutions."
+    description: "I dig into production and infrastructure issues until I find the root cause, then fix it so it stays fixed."
   },
   {
     icon: Zap,
-    title: "Performance Focused",
-    description: "Passionate about building scalable, high-performance applications with focus on data integrity and optimization."
+    title: "Automation First",
+    description: "If a task repeats, I script it. Python, Bash, and PowerShell save the team hours of manual work."
   },
   {
     icon: Heart,
-    title: "Quality Driven",
-    description: "Committed to clean, maintainable code with comprehensive testing and documentation standards."
+    title: "Reliability Minded",
+    description: "I keep uptime high and changes low-risk, from VM migrations with minimal downtime to well-tracked deployments."
   },
   {
     icon: Users,
     title: "Team Player",
-    description: "Strong emphasis on clear communication and collaborative problem-solving in cross-functional teams."
+    description: "I work closely with cross-functional teams to keep deployments and data moving smoothly between environments."
   }
 ];
 
-const expertise = [
-  { name: "Angular 17", level: 95 },
-  { name: "TypeScript", level: 90 },
-  { name: "Supabase", level: 85 },
-  { name: "Python", level: 80 },
-  { name: "PHP/Laravel", level: 85 },
-  { name: "CI/CD", level: 90 },
-  { name: "DevOps", level: 85 },
-  { name: "UI/UX Design", level: 80 },
+const skillGroups = [
+  { icon: Cloud, title: "Cloud & Infrastructure", items: ["Azure", "AWS", "Terraform", "Docker", "Kubernetes"] },
+  { icon: GitBranch, title: "CI/CD & Version Control", items: ["Azure DevOps", "GitHub Actions", "GitLab CI", "Jenkins", "Git"] },
+  { icon: Server, title: "Systems & Scripting", items: ["Linux", "Windows Server", "Python", "Bash", "PowerShell", "Networking"] },
+  { icon: Globe, title: "Web Development", items: ["Angular", "TypeScript", "JavaScript", "React", "Next.js", "Supabase", "MySQL"] },
+  { icon: Sparkles, title: "AI & Collaboration", items: ["Generative AI (Claude & other LLMs)", "Jira"] },
 ];
+
+// Below-the-fold sections animate when scrolled into view instead of on a timer.
+const reveal = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-80px" },
+  transition: { duration: 0.5, ease: "easeOut" },
+} as const;
 
 const socialLinks = [
   {
@@ -109,7 +119,10 @@ const socialLinks = [
 ];
 
 export default function AboutPage() {
+  const reduceMotion = useReducedMotion();
+
   return (
+    <MotionConfig reducedMotion="user">
     <main className="min-h-screen py-20">
       <div className="container mx-auto max-w-7xl px-4 md:px-8">
         {/* Hero Section with Image */}
@@ -142,7 +155,7 @@ export default function AboutPage() {
                     {/* Status badge */}
                     <motion.div
                       className="absolute top-4 right-4 px-3 py-1 bg-primary/90 backdrop-blur-sm rounded-full border border-primary/20 flex items-center gap-2"
-                      animate={{
+                      animate={reduceMotion ? undefined : {
                         boxShadow: [
                           '0 0 20px rgba(0,255,65,0.3)',
                           '0 0 30px rgba(0,255,65,0.5)',
@@ -156,9 +169,7 @@ export default function AboutPage() {
                     >
                       <motion.div
                         className="w-2 h-2 rounded-full bg-white"
-                        animate={{
-                          scale: [1, 1.2, 1],
-                        }}
+                        animate={reduceMotion ? undefined : { scale: [1, 1.2, 1] }}
                         transition={{
                           duration: 2,
                           repeat: Infinity,
@@ -171,14 +182,14 @@ export default function AboutPage() {
                   {/* Info panel */}
                   <div className="p-6 space-y-4">
                     <div>
-                      <h2 className="text-2xl font-bold mb-1">Angelo John S. Calleja</h2>
-                      <p className="text-sm text-primary font-mono">Software Engineer</p>
+                      <p className="text-2xl font-bold mb-1">Angelo John S. Calleja</p>
+                      <p className="text-sm text-primary font-mono">DevOps Engineer</p>
                     </div>
 
                     <div className="space-y-2 text-sm">
                       <div className="flex items-center gap-2 text-muted-foreground">
                         <MapPin className="w-4 h-4 text-primary" />
-                        <span>Taguig, Philippines</span>
+                        <span>Taguig City, Metro Manila</span>
                       </div>
                       <div className="flex items-center gap-2 text-muted-foreground">
                         <Briefcase className="w-4 h-4 text-primary" />
@@ -224,15 +235,15 @@ export default function AboutPage() {
                 </h1>
               </div>
 
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <div className="space-y-4 text-muted-foreground leading-relaxed max-w-3xl">
                 <p className="text-base md:text-lg">
-                  Hello! I'm a <span className="text-primary font-medium">highly analytical Computer Science graduate</span> from Bicol University with professional experience in <span className="text-primary font-medium">DevOps at Accenture</span> and extensive full-stack development expertise.
+                  Hi! I'm a <span className="text-primary font-medium">DevOps Engineer at Accenture</span> and a Computer Science graduate of Bicol University, based in Taguig City, Metro Manila.
                 </p>
                 <p className="text-base md:text-lg">
-                  I specialize in <span className="text-primary font-medium">JavaScript</span> and <span className="text-primary font-medium">logic-based troubleshooting</span>, with a proven ability to translate complex business requirements into efficient technical solutions. My work focuses on <span className="text-primary font-medium">data integrity</span> and <span className="text-primary font-medium">scalable tracking architecture</span>.
+                  Day to day, I manage <span className="text-primary font-medium">CI/CD pipelines</span> and <span className="text-primary font-medium">infrastructure</span> for production enterprise applications, resolve production and ISD issues, and <span className="text-primary font-medium">automate repetitive work</span> with Python, Bash, and PowerShell. I've migrated development and client VMs with minimal downtime and built internal tools like an <span className="text-primary font-medium">AWS ECS services inventory</span> and an <span className="text-primary font-medium">ISD tracker</span>.
                 </p>
                 <p className="text-base md:text-lg">
-                  Currently, I'm managing enterprise deployment pipelines at Accenture while continuously expanding my expertise in modern web technologies, cloud infrastructure, and automation.
+                  Before DevOps, I spent nearly two years building <span className="text-primary font-medium">full-stack systems</span> with Angular and Supabase, from a Business Permit Management System at Quanby Solutions to fidelity bond monitoring and communication systems for Camp Simeon Ola. That background helps me understand the applications I deploy, not just the pipelines that ship them.
                 </p>
               </div>
 
@@ -254,7 +265,7 @@ export default function AboutPage() {
                           <div className="flex-1 min-w-0">
                             <h3 className="font-semibold text-sm mb-0.5">{highlight.title}</h3>
                             <p className="text-xs text-primary mb-1">{highlight.subtitle}</p>
-                            <p className="text-xs text-muted-foreground line-clamp-2">{highlight.description}</p>
+                            <p className="text-sm text-muted-foreground leading-snug">{highlight.description}</p>
                           </div>
                         </div>
                       </CardContent>
@@ -267,12 +278,7 @@ export default function AboutPage() {
         </motion.div>
 
         {/* What I Value */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="mb-16"
-        >
+        <motion.div {...reveal} className="mb-16">
           <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
             <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/50 bg-clip-text text-transparent">
               What I Value
@@ -284,8 +290,9 @@ export default function AboutPage() {
               <motion.div
                 key={value.title}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7 + index * 0.1 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
               >
                 <Card className="border-primary/10 bg-card/50 hover:border-primary/30 transition-all duration-500 group h-full">
                   <CardContent className="p-6">
@@ -309,57 +316,53 @@ export default function AboutPage() {
           </div>
         </motion.div>
 
-        {/* Skills Progress Bars */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
-          className="mb-16"
-        >
-          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
+        {/* Skills & Tools */}
+        <motion.div {...reveal} className="mb-16">
+          <h2 className="text-2xl md:text-3xl font-bold mb-3 text-center">
             <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/50 bg-clip-text text-transparent">
-              Core Expertise
+              Skills &amp; Tools
             </span>
           </h2>
+          <p className="text-center text-muted-foreground mb-8 font-mono text-sm">
+            $ ls ~/toolbox
+          </p>
 
-          <Card className="border-primary/10 bg-card/50 backdrop-blur-sm">
-            <CardContent className="p-6 md:p-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {expertise.map((skill, index) => (
-                  <motion.div
-                    key={skill.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.9 + index * 0.05 }}
-                  >
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium">{skill.name}</span>
-                        <span className="text-xs font-mono text-primary">{skill.level}%</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {skillGroups.map((group, index) => (
+              <motion.div
+                key={group.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+              >
+                <Card className="border-primary/10 bg-card/50 hover:border-primary/30 transition-colors duration-300 h-full">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 bg-primary/10 rounded-lg text-primary">
+                        <group.icon className="w-5 h-5" aria-hidden="true" />
                       </div>
-                      <div className="h-2 bg-white/5 rounded-full overflow-hidden">
-                        <motion.div
-                          className="h-full bg-gradient-to-r from-primary to-primary/60 rounded-full"
-                          initial={{ width: 0 }}
-                          animate={{ width: `${skill.level}%` }}
-                          transition={{ delay: 1 + index * 0.05, duration: 1, ease: "easeOut" }}
-                        />
-                      </div>
+                      <h3 className="font-semibold">{group.title}</h3>
                     </div>
-                  </motion.div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+                    <ul className="flex flex-wrap gap-2">
+                      {group.items.map((item) => (
+                        <li
+                          key={item}
+                          className="px-2.5 py-1 bg-primary/10 text-primary rounded-md text-sm font-mono border border-primary/20"
+                        >
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Timeline / Journey */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1 }}
-          className="mb-16"
-        >
+        <motion.div {...reveal} className="mb-16">
           <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
             <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/50 bg-clip-text text-transparent">
               My Journey
@@ -373,14 +376,14 @@ export default function AboutPage() {
             <div className="space-y-8">
               {[
                 {
-                  year: "2025",
+                  year: "Jul 2025 – Present",
                   title: "DevOps Engineer @ Accenture",
-                  description: "Leading infrastructure and deployment automation for enterprise clients",
+                  description: "Managing CI/CD pipelines and infrastructure, migrating VMs, and building internal tools like an AWS ECS inventory and ISD tracker",
                   icon: Rocket,
                   color: "text-neon-green"
                 },
                 {
-                  year: "2025",
+                  year: "Feb – Jun 2025",
                   title: "Freelance Developer",
                   description: "Built mission-critical systems for Camp Simeon Ola including communication and monitoring platforms",
                   icon: Code,
@@ -402,26 +405,29 @@ export default function AboutPage() {
                 }
               ].map((item, index) => (
                 <motion.div
-                  key={item.year}
+                  key={item.title}
                   initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 1.1 + index * 0.1 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.4 }}
                   className={`relative flex items-center gap-4 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
                 >
                   {/* Timeline node */}
                   <div className="absolute left-4 md:left-1/2 w-3 h-3 -ml-[5px] bg-primary rounded-full border-2 border-background z-10">
-                    <motion.div
-                      className="absolute inset-0 rounded-full bg-primary"
-                      animate={{
-                        scale: [1, 1.5, 1],
-                        opacity: [0.5, 0, 0.5],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: index * 0.3,
-                      }}
-                    />
+                    {/* Only the current role pulses, so the motion marks "now" */}
+                    {index === 0 && !reduceMotion && (
+                      <motion.div
+                        className="absolute inset-0 rounded-full bg-primary"
+                        animate={{
+                          scale: [1, 1.8, 1],
+                          opacity: [0.6, 0, 0.6],
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                        }}
+                      />
+                    )}
                   </div>
 
                   {/* Content */}
@@ -454,12 +460,7 @@ export default function AboutPage() {
         </motion.div>
 
         {/* Social Links & CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.3 }}
-          className="text-center"
-        >
+        <motion.div {...reveal} className="text-center">
           <div className="terminal-box p-8 max-w-3xl mx-auto">
             <h3 className="text-xl font-semibold mb-4">Let's Connect</h3>
             <p className="text-muted-foreground mb-6">
@@ -471,14 +472,19 @@ export default function AboutPage() {
                 <motion.div
                   key={link.name}
                   initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 1.4 + index * 0.1 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
                 >
-                  <Button asChild variant="outline" className="gap-2">
-                    <Link href={link.url} target={link.url.startsWith('http') ? '_blank' : undefined}>
-                      {link.icon === 'github' && <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>}
-                      {link.icon === 'linkedin' && <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>}
-                      {link.icon === 'facebook' && <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036c-2.148 0-2.797 1.603-2.797 4.16v1.972h3.618l-1.19 3.667h-2.428v7.896c1 5.643 7.552 2.659 7.552-3.82V4.5A4.5 4.5 0 0 0 17.17 0H4.5A4.5 4.5 0 0 0 0 4.5v15.372c0 5.852 5.021 7.632 9.101 3.819z" /></svg>}
+                  <Button asChild variant="outline" className="gap-2 min-h-[44px]">
+                    <Link
+                      href={link.url}
+                      target={link.url.startsWith('http') ? '_blank' : undefined}
+                      rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    >
+                      {link.icon === 'github' && <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>}
+                      {link.icon === 'linkedin' && <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>}
+                      {link.icon === 'facebook' && <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036c-2.148 0-2.797 1.603-2.797 4.16v1.972h3.618l-1.19 3.667h-2.428v7.896c1 5.643 7.552 2.659 7.552-3.82V4.5A4.5 4.5 0 0 0 17.17 0H4.5A4.5 4.5 0 0 0 0 4.5v15.372c0 5.852 5.021 7.632 9.101 3.819z" /></svg>}
                       {link.icon === 'mail' && <Mail className="w-4 h-4" />}
                       <span>{link.name}</span>
                     </Link>
@@ -505,5 +511,6 @@ export default function AboutPage() {
         </motion.div>
       </div>
     </main>
+    </MotionConfig>
   );
 }

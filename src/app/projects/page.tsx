@@ -31,6 +31,30 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: "My DevOps Playbook",
+    description: "A searchable personal reference for DevOps commands, cheat sheets, runbooks, incidents, and gotchas. Command cards include one-click copy and fill-in fields for placeholders, covering Linux, Git, Docker, Kubernetes/OpenShift, cloud CLIs, IaC, CI/CD, monitoring, and security.",
+    tech: ["Astro", "Cloudflare Workers", "GitHub API", "Markdown"],
+    category: "DevOps",
+    image: "/assets/images/projects/devops-playbook.png",
+    demoLink: "https://my-devops-playbook.angelojohn0987.workers.dev",
+    githubLink: "https://github.com/gelogrammer/My_DevOps_Playbook",
+    featured: true,
+    year: "2026",
+    status: "Production"
+  },
+  {
+    title: "MBA Accreditation Portal - PUP CBA Graduate Studies",
+    description: "Accreditation portal for the Master in Business Administration program of PUP's College of Business Administration Graduate Studies, presenting AACCUP Level IV, Phase 2 evidence across five areas with narratives, videos, photo documentation, curriculum, and compliance documents.",
+    tech: ["HTML", "CSS", "JavaScript", "Cloudflare Pages"],
+    category: "Freelance",
+    image: "/assets/images/projects/mba-accreditation.png",
+    demoLink: "https://mba-accreditation.pages.dev",
+    githubLink: "#",
+    featured: true,
+    year: "2026",
+    status: "Production"
+  },
+  {
     title: "Business Permit Management System",
     description: "A centralized platform designed to streamline, digitize, and automate business operations, primarily focused on business permit applications, processing, and compliance monitoring.",
     tech: ["Angular 17", "Supabase", "TailwindCSS", "TypeScript"],
